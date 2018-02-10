@@ -47,8 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\BaseDomains.cs" />
+    <Compile Include="Data\Competition.cs" />
+    <Compile Include="Data\Contract.cs" />
     <Compile Include="Data\Country.cs" />
     <Compile Include="Data\Person.cs" />
+    <Compile Include="Data\Player.cs" />
+    <Compile Include="Data\PlayerContract.cs" />
+    <Compile Include="Data\Team.cs" />
+    <Compile Include="Engine\PlayerAttributeGeneratorEngine.cs" />
+    <Compile Include="Engine\YouthGeneratorEngine.cs" />
+    <Compile Include="Engine\YouthTeamGeneratorEngine.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

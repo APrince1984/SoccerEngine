@@ -7,7 +7,6 @@ namespace YouthGenerator.Engine
     public static class YouthTeamGeneratorEngine
     {
         private static List<Player> _players;
-        private static Dictionary<int, int> _positions;
         private static Random _random = new Random();
 
         public static List<Player> GenerateYouthTeam(int countryRating, int competitionRating, int teamrating)

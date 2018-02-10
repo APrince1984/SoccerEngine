@@ -40,8 +40,8 @@
         public struct GoalyAttributes
         {
             public const string Reflexes = "Reflexes"; // 13
-            public const string BallHandling = "Ballhandling"; // 14
-            public const string PenaltyStopping = "Penalty stopping"; // 15
+            public const string Ballhandling = "Ballhandling"; // 14
+            public const string PenaltyStopping = "Penalty Stopping"; // 15
         }
 
         public struct DefensiveAttributes

@@ -24,14 +24,14 @@ namespace YouthGenerator.Engine
         private static void SetPlayerAttributes(int totalRating, Player player)
         {
             player.PlayerAttributes = new Dictionary<string, int>();
-            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.SetGoalyAttributes(totalRating, player.MainPosition == Position.Goaly));
-            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.SetFysicalAttributes(totalRating, IsRandomTrue()));
-            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.SetMentalAttributes(totalRating, IsRandomTrue()));
-            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.SetSetPiecesAttributes(totalRating, IsRandomTrue()));
-            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.SetAttackingAttributes(totalRating, (IsRandomTrue() && player.MainPosition != Position.Goaly)));
-            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.SetDefensiveAttributes(totalRating, player.MainPosition == Position.Defence));
-            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.SetMidfieldAttributes(totalRating, player.MainPosition == Position.Midfield));
-            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.SetForwardAttributes(totalRating, player.MainPosition == Position.Forward));
+            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.GoalyAttributes), totalRating, player.MainPosition == Position.Goaly));
+            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.FysicalAttributes), totalRating, IsRandomTrue()));
+            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.MentalAttributes), totalRating, IsRandomTrue()));
+            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.SetPiecesAttributes), totalRating, IsRandomTrue()));
+            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.AttackingAttributes), totalRating, (IsRandomTrue() && player.MainPosition != Position.Goaly)));
+            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.DefensiveAttributes), totalRating, player.MainPosition == Position.Defence));
+            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.MidfieldAttribues), totalRating, player.MainPosition == Position.Midfield));
+            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.ForwardAttributes), totalRating, player.MainPosition == Position.Forward));
         }
 
         private static bool IsRandomTrue()
