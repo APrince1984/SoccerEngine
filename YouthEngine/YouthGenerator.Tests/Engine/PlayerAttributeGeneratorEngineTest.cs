@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using YouthGenerator.Data;
@@ -11,19 +12,33 @@ namespace YouthGenerator.Tests.Engine
     public class PlayerAttributeGeneratorEngineTest
     {
         private static Random _random = new Random();
+
         [Test]
-        public void AddPlayerAttributesByPlayerType_TypeIsGoaly_ReturnsPlayerAttributesForGoaly()
+        [TestCase(typeof(AttributeName.GoalyAttributes))]
+        [TestCase(typeof(AttributeName.DefensiveAttributes))]
+        [TestCase(typeof(AttributeName.MidfieldAttribues))]
+        [TestCase(typeof(AttributeName.ForwardAttributes))]
+        [TestCase(typeof(AttributeName.FysicalAttributes))]
+        [TestCase(typeof(AttributeName.MentalAttributes))]
+        [TestCase(typeof(AttributeName.SetPiecesAttributes))]
+        [TestCase(typeof(AttributeName.AttackingAttributes))]
+        public void AddPlayerAttributesByPlayerType_ReturnsPlayerAttributesForGivenType(Type attributeType)
         {
-            var totalRating = _random.Next(1, 5);
-            var attributes = PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.GoalyAttributes), totalRating, true);
+            var attributes = PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(attributeType, _random.Next(1, 5), true);
+            AssertAttributesByType(attributes, attributeType);
+        }
+
+        private void AssertAttributesByType(Dictionary<string, int> attributes, Type type)
+        {
             Assert.IsNotEmpty(attributes);
-            Assert.AreEqual(3, attributes.Count);
-            Assert.IsTrue(attributes.ContainsKey(AttributeName.GoalyAttributes.Reflexes.RemoveWhitespace()));
-            Assert.IsTrue(attributes.ContainsKey(AttributeName.GoalyAttributes.Ballhandling.RemoveWhitespace()));
-            Assert.IsTrue(attributes.ContainsKey(AttributeName.GoalyAttributes.PenaltyStopping.RemoveWhitespace()));
-            Assert.GreaterOrEqual(attributes.FirstOrDefault(a => a.Key == AttributeName.GoalyAttributes.Reflexes.RemoveWhitespace()).Value, 40);
-            Assert.GreaterOrEqual(attributes.FirstOrDefault(a => a.Key == AttributeName.GoalyAttributes.Ballhandling.RemoveWhitespace()).Value, 40);
-            Assert.GreaterOrEqual(attributes.FirstOrDefault(a => a.Key == AttributeName.GoalyAttributes.PenaltyStopping.RemoveWhitespace()).Value, 40);
+            var fields = type.GetFields();
+            Assert.AreEqual(fields.Count(), attributes.Count);
+            foreach (var field in fields)
+            {
+                Assert.IsTrue(attributes.ContainsKey(field.Name));
+                if (field.Name != "InjuryProneness")
+                    Assert.GreaterOrEqual(attributes.FirstOrDefault(attr => attr.Key == field.Name).Value, 40);
+            }
         }
     }
 }
