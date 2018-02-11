@@ -17,18 +17,19 @@ namespace YouthGenerator.Engine
             var player = new Player();
             foreach (var position in squadAssembly)
             {
-                switch (position.Key)
-                {
-                    case Position.Goaly:
-                        player = YouthGeneratorEngine.CreateGoaly(_players, totalRating);
-                        break;
-                    case Position.Defence:
-                        break;
-                    case Position.Midfield:
-                        break;
-                    case Position.Forward:
-                        break;
-                }
+                player = YouthGeneratorEngine.CreatePlayer(totalRating, position.Value);
+                //switch (position.Key)
+                //{
+                //    case Position.Goaly:
+                //        player = YouthGeneratorEngine.CreateGoaly(_players, totalRating);
+                //        break;
+                //    case Position.Defence:
+                //        break;
+                //    case Position.Midfield:
+                //        break;
+                //    case Position.Forward:
+                //        break;
+                //}
             }
             player.BirthDate = DateTime.Now.Date.AddYears(-(_random.Next(15, 16))).AddDays(_random.Next(-365, 365));
             return _players;

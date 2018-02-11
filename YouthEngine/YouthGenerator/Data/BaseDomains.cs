@@ -101,14 +101,26 @@
     public struct PlayerPosition
     {
         public const int Goaly = 1;
-        public const int RightBack = 1;
-        public const int CenterBack = 3;
-        public const int LeftBack = 5;
-        public const int RightMidfield = 7;
-        public const int DefensiveMidfield = 6;
-        public const int CenterMidfield = 8;
-        public const int AttackingMidfield = 10;
-        public const int LeftMidfield = 11;
-        public const int Forward = 9;
+
+        public struct DefensivePositions
+        {
+            public const int RightBack = 1;
+            public const int CenterBack = 3;
+            public const int LeftBack = 5;
+            public const int DefensiveMidfield = 6;
+        }
+        public struct MidfieldPositions
+        {
+            public const int RightMidfield = 7;
+            public const int DefensiveMidfield = 6;
+            public const int CenterMidfield = 8;
+            public const int AttackingMidfield = 10;
+            public const int LeftMidfield = 11;
+        }
+        public struct ForwardPositions
+        {
+            public const int AttackingMidfield = 10;
+            public const int Forward = 9;
+        }
     }
 }

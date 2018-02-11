@@ -4,7 +4,6 @@ using System.Linq;
 using NUnit.Framework;
 using YouthGenerator.Data;
 using YouthGenerator.Engine;
-using YouthGenerator.Extensions;
 
 namespace YouthGenerator.Tests.Engine
 {
