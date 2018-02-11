@@ -56,6 +56,7 @@
     <Compile Include="Data\PlayerContract.cs" />
     <Compile Include="Data\Team.cs" />
     <Compile Include="Engine\PlayerAttributeGeneratorEngine.cs" />
+    <Compile Include="Engine\RandomEngine.cs" />
     <Compile Include="Engine\YouthGeneratorEngine.cs" />
     <Compile Include="Engine\YouthTeamGeneratorEngine.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />

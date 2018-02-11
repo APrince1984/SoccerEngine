@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using YouthGenerator.Data;
@@ -10,8 +9,6 @@ namespace YouthGenerator.Tests.Engine
     [TestFixture]
     public class YouthTeamGeneratorEngineTest
     {
-        private static readonly Random Rnd = new Random();
-
         [Test]
         public void CreateAllPlayersInAssembly_ReturnsListOfPlayers()
         {
@@ -22,7 +19,7 @@ namespace YouthGenerator.Tests.Engine
                 {Position.Midfield, 3},
                 {Position.Forward, 2},
             };
-            var players = YouthTeamGeneratorEngine.CreateAllPlayersInAssembly(squadAssembly, Rnd.Next(5, 125));
+            var players = YouthTeamGeneratorEngine.CreateAllPlayersInAssembly(squadAssembly, RandomEngine.GetRandomInt(5, 125));
             Assert.IsNotEmpty(players);
             Assert.AreEqual(10, players.Count);
             Assert.AreEqual(2, players.Count(p => p.MainPosition == Position.Goaly));
@@ -102,7 +99,7 @@ namespace YouthGenerator.Tests.Engine
         [Test]
         public void GenerateYouthTeam_ReturnsListOfPlayersContainingAtLeast20Players()
         {
-            var players = YouthTeamGeneratorEngine.GenerateYouthTeam(Rnd.Next(1, 5), Rnd.Next(1, 5), Rnd.Next(1, 5));
+            var players = YouthTeamGeneratorEngine.GenerateYouthTeam(RandomEngine.GetRandomInt(1, 5), RandomEngine.GetRandomInt(1, 5), RandomEngine.GetRandomInt(1, 5));
             Assert.IsNotEmpty(players);
             Assert.GreaterOrEqual(players.Count, 20);
             Assert.GreaterOrEqual(players.Count(p => p.MainPosition == Position.Goaly), 2);

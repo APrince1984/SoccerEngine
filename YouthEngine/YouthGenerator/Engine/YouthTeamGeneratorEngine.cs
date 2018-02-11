@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using YouthGenerator.Data;
 
@@ -7,8 +6,6 @@ namespace YouthGenerator.Engine
 {
     public static class YouthTeamGeneratorEngine
     {
-        private static readonly Random Rnd = new Random();
-
         public static List<Player> GenerateYouthTeam(int countryRating, int competitionRating, int teamrating)
         {
             var totalRating = teamrating * competitionRating * countryRating;
@@ -33,7 +30,7 @@ namespace YouthGenerator.Engine
             var totalNbrOfPlayers = CountNumberOfPlayers(squadAssembly);
             while (totalNbrOfPlayers < 20)
             {
-                squadAssembly[squadAssembly.Keys.ElementAt(Rnd.Next(0, (squadAssembly.Count - 1)))] += 1;
+                squadAssembly[squadAssembly.Keys.ElementAt(RandomEngine.GetRandomInt(0, (squadAssembly.Count - 1)))] += 1;
                 totalNbrOfPlayers++;
             }
         }
@@ -50,10 +47,10 @@ namespace YouthGenerator.Engine
         {
             return new Dictionary<int, int>
             {
-                { Position.Goaly, Rnd.Next(2, 3) },
-                { Position.Defence, Rnd.Next(5, 7) },
-                { Position.Midfield, Rnd.Next(5, 7) },
-                { Position.Forward, Rnd.Next(3, 4) },
+                { Position.Goaly, RandomEngine.GetRandomInt(2, 3) },
+                { Position.Defence, RandomEngine.GetRandomInt(5, 7) },
+                { Position.Midfield, RandomEngine.GetRandomInt(5, 7) },
+                { Position.Forward, RandomEngine.GetRandomInt(3, 4) },
             };
         }
     }

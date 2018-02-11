@@ -9,8 +9,6 @@ namespace YouthGenerator.Engine
     
     public static class YouthGeneratorEngine
     {
-        private static readonly Random Rnd = new Random();
-
         public static Player CreatePlayer(int totalRating, int mainPosition)
         {
             var player = new Player();
@@ -29,7 +27,7 @@ namespace YouthGenerator.Engine
             }
             
             player.Positions = new List<int>();
-            var nbrOfPositions = player.MainPosition == Position.Forward ? Rnd.Next(1, 2) : Rnd.Next(1, 3);
+            var nbrOfPositions = player.MainPosition == Position.Forward ? RandomEngine.GetRandomInt(1, 2) : RandomEngine.GetRandomInt(1, 3);
             for (var i = 1; i <= nbrOfPositions; i++)
             {
                 switch (player.MainPosition)
@@ -66,7 +64,7 @@ namespace YouthGenerator.Engine
 
         private static int GetPlayerPositionValue(FieldInfo[] playerPositions)
         {
-            var index = Rnd.Next(0, playerPositions.Length);
+            var index = RandomEngine.GetRandomInt(0, playerPositions.Length);
             return (int) playerPositions[index].GetValue(playerPositions[index].Name);
         }
 
@@ -74,9 +72,9 @@ namespace YouthGenerator.Engine
         {
             player.PlayerAttributes = new Dictionary<string, int>();
             player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.GoalyAttributes), totalRating, player.MainPosition == Position.Goaly));
-            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.FysicalAttributes), totalRating, IsRandomTrue(Rnd.Next(1,6))));
-            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.MentalAttributes), totalRating, IsRandomTrue(Rnd.Next(1,6))));
-            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.SetPiecesAttributes), totalRating, IsRandomTrue(Rnd.Next(1,6))));
+            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.FysicalAttributes), totalRating, IsRandomTrue(RandomEngine.GetRandomInt(1, 6))));
+            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.MentalAttributes), totalRating, IsRandomTrue(RandomEngine.GetRandomInt(1,6))));
+            player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.SetPiecesAttributes), totalRating, IsRandomTrue(RandomEngine.GetRandomInt(1,6))));
             player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.AttackingAttributes), totalRating, (IsRandomTrue(player.MainPosition) && player.MainPosition != Position.Goaly)));
             player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.DefensiveAttributes), totalRating, player.MainPosition == Position.Defence));
             player.PlayerAttributes.AddRange(PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(typeof(AttributeName.MidfieldAttribues), totalRating, player.MainPosition == Position.Midfield));
@@ -85,7 +83,7 @@ namespace YouthGenerator.Engine
 
         private static bool IsRandomTrue(int chanceImprovement)
         {
-            var rnd = Rnd.Next(1, 10);
+            var rnd = RandomEngine.GetRandomInt(1, 10);
             switch (chanceImprovement)
             {
                 case Position.Goaly:

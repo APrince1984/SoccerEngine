@@ -10,8 +10,6 @@ namespace YouthGenerator.Tests.Engine
     [TestFixture]
     public class YouthGeneratorEngineTest
     {
-        private static readonly Random Rnd = new Random();
-
         [Test]
         [TestCase(Position.Goaly)]
         [TestCase(Position.Defence)]
@@ -19,7 +17,7 @@ namespace YouthGenerator.Tests.Engine
         [TestCase(Position.Forward)]
         public void CreatePlayer_ReturnsPlayerWithPositionsAndAttributes(int mainPosition)
         {
-            var player = YouthGeneratorEngine.CreatePlayer(Rnd.Next(5, 25), mainPosition);
+            var player = YouthGeneratorEngine.CreatePlayer(RandomEngine.GetRandomInt(5, 25), mainPosition);
             Assert.IsNotNull(player);
             Assert.IsNotNull(player.MainPosition);
             Assert.IsNotEmpty(player.Positions);
@@ -36,7 +34,7 @@ namespace YouthGenerator.Tests.Engine
         public void SetPlayerAttributes_SetsAllPlayerAttributes(int mainPosition)
         {
             var player = new Player { MainPosition = mainPosition };
-            YouthGeneratorEngine.SetPlayerAttributes(Rnd.Next(5,125), player);
+            YouthGeneratorEngine.SetPlayerAttributes(RandomEngine.GetRandomInt(5,125), player);
             Assert.IsNotNull(player.PlayerAttributes);
             Assert.AreEqual(28, player.PlayerAttributes.Count);
             var fields = typeof(AttributeName.GoalyAttributes).GetFields();
