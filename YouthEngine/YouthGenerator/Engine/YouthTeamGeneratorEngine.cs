@@ -1,48 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using YouthGenerator.Data;
 
 namespace YouthGenerator.Engine
 {
     public static class YouthTeamGeneratorEngine
     {
-        private static List<Player> _players;
-        private static Random _random = new Random();
+        private static readonly Random Rnd = new Random();
 
         public static List<Player> GenerateYouthTeam(int countryRating, int competitionRating, int teamrating)
         {
             var totalRating = teamrating * competitionRating * countryRating;
-            _players = new List<Player>();
-            var squadAssembly = SquadAssembly();
-            var player = new Player();
-            foreach (var position in squadAssembly)
-            {
-                player = YouthGeneratorEngine.CreatePlayer(totalRating, position.Value);
-                //switch (position.Key)
-                //{
-                //    case Position.Goaly:
-                //        player = YouthGeneratorEngine.CreateGoaly(_players, totalRating);
-                //        break;
-                //    case Position.Defence:
-                //        break;
-                //    case Position.Midfield:
-                //        break;
-                //    case Position.Forward:
-                //        break;
-                //}
-            }
-            player.BirthDate = DateTime.Now.Date.AddYears(-(_random.Next(15, 16))).AddDays(_random.Next(-365, 365));
-            return _players;
+            var squadAssembly = BuildSquadAssembly();
+            FillSquadAssemblyUntilSquadExistsOfAtLeast20Players(squadAssembly);
+            return CreateAllPlayersInAssembly(squadAssembly, totalRating);
         }
 
-        public static Dictionary<int, int> SquadAssembly()
+        internal static List<Player> CreateAllPlayersInAssembly(Dictionary<int, int> squadAssembly, int totalRating)
+        {
+            var players = new List<Player>();
+            foreach (var assembly in squadAssembly)
+                for (var i = 0; i < assembly.Value; i++)
+                    players.Add(YouthGeneratorEngine.CreatePlayer(totalRating, assembly.Key));
+
+            //player.BirthDate = DateTime.Now.Date.AddYears(-(Rnd.Next(15, 16))).AddDays(Rnd.Next(-365, 365));
+            return players;
+        }
+
+        internal static void FillSquadAssemblyUntilSquadExistsOfAtLeast20Players(Dictionary<int, int> squadAssembly)
+        {
+            var totalNbrOfPlayers = CountNumberOfPlayers(squadAssembly);
+            while (totalNbrOfPlayers < 20)
+            {
+                squadAssembly[squadAssembly.Keys.ElementAt(Rnd.Next(0, (squadAssembly.Count - 1)))] += 1;
+                totalNbrOfPlayers++;
+            }
+        }
+
+        internal static int CountNumberOfPlayers(Dictionary<int, int> squadAssembly)
+        {
+            var totalNbrOfPlayers = 0;
+            foreach (var assembly in squadAssembly)
+                totalNbrOfPlayers += assembly.Value;
+            return totalNbrOfPlayers;
+        }
+
+        internal static Dictionary<int, int> BuildSquadAssembly()
         {
             return new Dictionary<int, int>
             {
-                { Position.Goaly, _random.Next(2, 3) },
-                { Position.Defence, _random.Next(5, 7) },
-                { Position.Midfield, _random.Next(5, 7) },
-                { Position.Forward, _random.Next(3, 4) },
+                { Position.Goaly, Rnd.Next(2, 3) },
+                { Position.Defence, Rnd.Next(5, 7) },
+                { Position.Midfield, Rnd.Next(5, 7) },
+                { Position.Forward, Rnd.Next(3, 4) },
             };
         }
     }
