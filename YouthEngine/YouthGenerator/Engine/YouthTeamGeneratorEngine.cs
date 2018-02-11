@@ -21,7 +21,6 @@ namespace YouthGenerator.Engine
                 for (var i = 0; i < assembly.Value; i++)
                     players.Add(YouthGeneratorEngine.CreatePlayer(totalRating, assembly.Key));
 
-            //player.BirthDate = DateTime.Now.Date.AddYears(-(Rnd.Next(15, 16))).AddDays(Rnd.Next(-365, 365));
             return players;
         }
 

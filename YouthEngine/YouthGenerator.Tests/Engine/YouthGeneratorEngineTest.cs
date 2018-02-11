@@ -27,6 +27,17 @@ namespace YouthGenerator.Tests.Engine
         }
 
         [Test]
+        public void SetPlayerPersonalSettings_ReturnsPlayerWithPersonalSettings()
+        {
+            var player = new Player();
+            YouthGeneratorEngine.SetPlayerPersonalSettings(player);
+            Assert.IsNotNull(player.FirstName);
+            Assert.IsNotNull(player.LastName);
+            Assert.IsNotNull(player.BirthDate);
+            Assert.IsTrue(player.BirthDate < DateTime.Now.Date);
+        }
+
+        [Test]
         [TestCase(Position.Goaly)]
         [TestCase(Position.Defence)]
         [TestCase(Position.Midfield)]

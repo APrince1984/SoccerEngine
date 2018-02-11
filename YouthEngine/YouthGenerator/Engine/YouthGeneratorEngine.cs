@@ -13,9 +13,18 @@ namespace YouthGenerator.Engine
         {
             var player = new Player();
             player.MainPosition = mainPosition;
+            SetPlayerPersonalSettings(player);
             SetPlayerPositionsByMainPosition(player);
             SetPlayerAttributes(totalRating, player);
             return player;
+        }
+
+        internal static void SetPlayerPersonalSettings(Player player)
+        {
+            player.FirstName = DataLists.GetFirstName();
+            player.LastName = DataLists.GetLastName();
+            player.BirthDate = DateTime.Now.Date.AddYears(-(RandomEngine.GetRandomInt(15, 16))).AddDays(RandomEngine.GetRandomInt(-365, 365));
+            player.PersonNationality = DataLists.GetCountry();
         }
 
         internal static void SetPlayerPositionsByMainPosition(Player player)
