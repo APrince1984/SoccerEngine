@@ -11,7 +11,7 @@ namespace YouthGenerator.Tests.Engine
     [TestFixture]
     public class PlayerAttributeGeneratorEngineTest
     {
-        private static Random _random = new Random();
+        private static readonly Random _random = new Random();
 
         [Test]
         [TestCase(typeof(AttributeName.GoalyAttributes))]
