@@ -45,7 +45,7 @@ namespace SoccerDataGenerator.Generators.AssemblyGenerators
             var persons = new List<TEntity>();
             foreach (var person in assembly)
                 for (int i = 0; i < person.Value; i++)
-                    persons.Add(PersonStrategyFactory<TEntity>.CreatePlayer(personType, totalRating, person.Key));
+                    persons.Add(PersonStrategyFactory<TEntity>.CreatePerson(personType, totalRating, person.Key));
 
             return persons;
         }

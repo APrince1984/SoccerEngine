@@ -19,7 +19,7 @@ namespace SoccerDataGenerator.Tests.Generators.PersonGenerators
         [TestCase(Position.Forward)]
         public void CreatePlayer_ReturnsPlayerWithPositionsAndAttributes(int mainPosition)
         {
-            var player = PersonStrategyFactory<Player>.CreatePlayer(ePerson.Player, RandomUtil.GetRandomInt(5, 25), mainPosition);
+            var player = PersonStrategyFactory<Player>.CreatePerson(ePerson.Player, RandomUtil.GetRandomInt(5, 25), mainPosition);
             Assert.IsNotNull(player);
             Assert.IsNotNull(player.MainFunction);
             Assert.IsNotEmpty(player.Positions);

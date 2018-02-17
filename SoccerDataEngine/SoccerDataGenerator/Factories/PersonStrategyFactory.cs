@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using SoccerDataGenerator.Data;
-using SoccerDataGenerator.Generators;
 using SoccerDataGenerator.Generators.PersonGenerators;
 
 namespace SoccerDataGenerator.Factories
@@ -15,7 +14,7 @@ namespace SoccerDataGenerator.Factories
             PersonDictionary.Add(ePerson.Staff, new StaffGeneratorStrategy());
         }
 
-        public static TEntity CreatePlayer(ePerson personType, int totalRating, int mainFunction)
+        public static TEntity CreatePerson(ePerson personType, int totalRating, int mainFunction)
         {
            return ((IPersonGeneratorStrategy<TEntity>) PersonDictionary[personType]).CreatePerson(totalRating, mainFunction);
         }
