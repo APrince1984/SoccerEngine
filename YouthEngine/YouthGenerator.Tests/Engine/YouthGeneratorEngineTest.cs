@@ -18,7 +18,7 @@ namespace YouthGenerator.Tests.Engine
         [TestCase(Position.Forward)]
         public void CreatePlayer_ReturnsPlayerWithPositionsAndAttributes(int mainPosition)
         {
-            var player = new IPersonGeneratorEngineStrategy<Player>(ePerson.Player); // YouthGeneratorEngine.CreatePlayer(RandomUtil.GetRandomInt(5, 25), mainPosition);
+            var player = PersonStrategyFactory<Player>.CreatePlayer(ePerson.Player, RandomUtil.GetRandomInt(5, 25), mainPosition);
             Assert.IsNotNull(player);
             Assert.IsNotNull(player.MainPosition);
             Assert.IsNotEmpty(player.Positions);
@@ -31,7 +31,7 @@ namespace YouthGenerator.Tests.Engine
         public void SetPlayerPersonalSettings_ReturnsPlayerWithPersonalSettings()
         {
             var player = new Player();
-            YouthGeneratorEngineStrategy.SetPersonPersonalInformation(player);
+            PersonStrategyFactory<Player>.SetPersonalInformation(ePerson.Player, player);
             Assert.IsNotNull(player.FirstName);
             Assert.IsNotNull(player.LastName);
             Assert.IsNotNull(player.BirthDate);
@@ -74,7 +74,7 @@ namespace YouthGenerator.Tests.Engine
         public void SetPlayerPositionsByMainPosition_SetsPlayerPositionsByMainPosition(int mainPosition)
         {
             var player = new Player{MainPosition = mainPosition};
-            YouthGeneratorEngineStrategy.SetPersonAttributes(player);
+            PersonStrategyFactory<Player>.SetPersonAttributes(ePerson.Player, player);
             Assert.IsNotEmpty(player.Positions);
             Assert.GreaterOrEqual(player.Positions.Count, 1);
             switch (mainPosition)

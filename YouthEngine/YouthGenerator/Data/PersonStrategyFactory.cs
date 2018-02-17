@@ -18,6 +18,16 @@ namespace YouthGenerator.Data
         {
            return ((IPersonGeneratorEngineStrategy<TEntity>) _personDictionary[personType]).CreatePerson(totalRating, mainFunction);
         }
+
+        public static void SetPersonalInformation(ePerson personType, TEntity person)
+        {
+            ((IPersonGeneratorEngineStrategy<TEntity>)_personDictionary[personType]).SetPersonPersonalInformation(person);
+        }
+
+        public static void SetPersonAttributes(ePerson personType, TEntity person)
+        {
+            ((IPersonGeneratorEngineStrategy<TEntity>)_personDictionary[personType]).SetPersonAttributes(person);
+        }
     }
 
   

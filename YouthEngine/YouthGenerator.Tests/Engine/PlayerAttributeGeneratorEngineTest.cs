@@ -27,6 +27,7 @@ namespace YouthGenerator.Tests.Engine
             AssertAttributesByType(attributes, attributeType);
         }
 
+
         private void AssertAttributesByType(Dictionary<string, int> attributes, Type type)
         {
             Assert.IsNotEmpty(attributes);
@@ -36,7 +37,7 @@ namespace YouthGenerator.Tests.Engine
             {
                 Assert.IsTrue(attributes.ContainsKey(field.Name));
                 if (field.Name != "InjuryProneness")
-                    Assert.GreaterOrEqual(attributes.FirstOrDefault(attr => attr.Key == field.Name).Value, 40);
+                    Assert.GreaterOrEqual(attributes.FirstOrDefault(attr => attr.Key == field.Name).Value, 8);
             }
         }
     }
