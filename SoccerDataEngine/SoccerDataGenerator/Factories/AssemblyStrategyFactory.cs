@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using SoccerDataGenerator.Data;
 using SoccerDataGenerator.Generators;
+using SoccerDataGenerator.Generators.AssemblyGenerators;
 
 namespace SoccerDataGenerator.Factories
 {
@@ -10,8 +11,8 @@ namespace SoccerDataGenerator.Factories
 
         static AssemblyStrategyFactory()
         {
-            AssemblyDictionary.Add(ePerson.Player, new SquadGenerator());
-            AssemblyDictionary.Add(ePerson.Coach, new StaffGenerator());
+            AssemblyDictionary.Add(ePerson.Player, new SquadAssemblyGeneratorStrategy());
+            AssemblyDictionary.Add(ePerson.Coach, new StaffAssemblyGeneratorStrategy());
         }
 
         public static List<TEntity> GenerateAssembly(ePerson personType, int countryRating,

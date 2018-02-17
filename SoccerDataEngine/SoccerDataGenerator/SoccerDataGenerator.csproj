@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\BaseDomains.cs" />
-    <Compile Include="Data\Coach.cs" />
+    <Compile Include="Data\Staff.cs" />
     <Compile Include="Data\Competition.cs" />
     <Compile Include="Data\Contract.cs" />
     <Compile Include="Data\Country.cs" />
@@ -60,16 +60,16 @@
     <Compile Include="Data\Player.cs" />
     <Compile Include="Data\PlayerContract.cs" />
     <Compile Include="Data\Team.cs" />
-    <Compile Include="Generators\AssemblyGenerator.cs" />
-    <Compile Include="Generators\CoachGeneratorStrategy.cs" />
-    <Compile Include="Generators\IAssemblyGenerator.cs" />
-    <Compile Include="Generators\IPersonGeneratorStrategy.cs" />
-    <Compile Include="Generators\PersonGeneratorStrategyBase.cs" />
+    <Compile Include="Generators\AssemblyGenerators\AssemblyGeneratorStrategyBase.cs" />
+    <Compile Include="Generators\PersonGenerators\StaffGeneratorStrategy.cs" />
+    <Compile Include="Generators\AssemblyGenerators\IAssemblyGeneratorStrategy.cs" />
+    <Compile Include="Generators\PersonGenerators\IPersonGeneratorStrategy.cs" />
+    <Compile Include="Generators\PersonGenerators\PersonGeneratorStrategyBase.cs" />
     <Compile Include="Generators\PlayerAttributeGenerator.cs" />
-    <Compile Include="Generators\StaffGenerator.cs" />
+    <Compile Include="Generators\AssemblyGenerators\StaffAssemblyGeneratorStrategy.cs" />
     <Compile Include="Utils\RandomUtil.cs" />
-    <Compile Include="Generators\PlayerGeneratorStrategy.cs" />
-    <Compile Include="Generators\SquadGenerator.cs" />
+    <Compile Include="Generators\PersonGenerators\PlayerGeneratorStrategy.cs" />
+    <Compile Include="Generators\AssemblyGenerators\SquadAssemblyGeneratorStrategy.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SoccerDataGenerator.Data;
 
-namespace SoccerDataGenerator.Generators
+namespace SoccerDataGenerator.Generators.AssemblyGenerators
 {
     public interface IAssemblyGenerator<TEntity>
     {

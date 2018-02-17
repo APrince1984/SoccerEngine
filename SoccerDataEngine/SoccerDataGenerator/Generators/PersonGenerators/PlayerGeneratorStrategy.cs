@@ -5,7 +5,7 @@ using SoccerDataGenerator.Data;
 using SoccerDataGenerator.Extensions;
 using SoccerDataGenerator.Utils;
 
-namespace SoccerDataGenerator.Generators
+namespace SoccerDataGenerator.Generators.PersonGenerators
 {
     
     public class PlayerGeneratorStrategy : PersonGeneratorStrategyBase<Player>

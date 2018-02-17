@@ -2,7 +2,7 @@
 using SoccerDataGenerator.Data;
 using SoccerDataGenerator.Utils;
 
-namespace SoccerDataGenerator.Generators
+namespace SoccerDataGenerator.Generators.PersonGenerators
 {
     public abstract class PersonGeneratorStrategyBase<TEntity> : IPersonGeneratorStrategy<TEntity> where TEntity : Person , new()
     {

@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using SoccerDataGenerator.Data;
 using SoccerDataGenerator.Factories;
 using SoccerDataGenerator.Utils;
 
-namespace SoccerDataGenerator.Generators
+namespace SoccerDataGenerator.Generators.AssemblyGenerators
 {
-    public abstract class AssemblyGenerator<TEntity> : IAssemblyGenerator<TEntity> where TEntity : Person, new()
+    public abstract class AssemblyGeneratorBase<TEntity> : IAssemblyGenerator<TEntity> where TEntity : Person, new()
     {
         protected static int NumberOfPersonsInAssembly { get; set; }
 
@@ -23,12 +22,12 @@ namespace SoccerDataGenerator.Generators
 
         protected internal abstract Dictionary<int, int> BuildAssembly();
 
-        protected internal static void CompleteAssembly(Dictionary<int, int> assembly)
+        protected internal void CompleteAssembly(Dictionary<int, int> assembly)
         {
             var personsInAssembly = CountNumberOfPersonsInAssembly(assembly);
             while (personsInAssembly < NumberOfPersonsInAssembly)
             {
-                assembly[assembly.Keys.ElementAt(RandomUtil.GetRandomInt(0, (assembly.Count - 1)))] += 1;
+                AddPersonToAssembly(assembly);
                 personsInAssembly++;
             }
         }
@@ -51,5 +50,9 @@ namespace SoccerDataGenerator.Generators
             return persons;
         }
 
+        protected internal virtual void AddPersonToAssembly(Dictionary<int, int> assembly)
+        {
+            assembly[assembly.Keys.ElementAt(RandomUtil.GetRandomInt(0, (assembly.Count - 1)))] += 1;
+        }
     }
 }

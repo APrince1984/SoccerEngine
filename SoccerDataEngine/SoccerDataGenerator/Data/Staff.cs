@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SoccerDataGenerator.Data
 {
-    public class Coach : Person
+    public class Staff : Person
     {
-        [ForeignKey("CoachTeam")]
+        [ForeignKey("StaffTeam")]
         public int? IdTeam { get; set; }
 
-        public virtual Team CoachTeam { get; set; }
+        public virtual Team StaffTeam { get; set; }
 
         public int MainFunction { get; set; }
 

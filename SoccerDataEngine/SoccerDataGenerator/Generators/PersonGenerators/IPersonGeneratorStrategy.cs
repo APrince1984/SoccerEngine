@@ -1,4 +1,4 @@
-﻿namespace SoccerDataGenerator.Generators
+﻿namespace SoccerDataGenerator.Generators.PersonGenerators
 {
     public interface IPersonGeneratorStrategy<TEntity>
     {

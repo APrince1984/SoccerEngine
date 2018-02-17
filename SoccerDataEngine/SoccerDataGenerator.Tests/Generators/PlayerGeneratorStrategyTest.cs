@@ -5,6 +5,7 @@ using NUnit.Framework;
 using SoccerDataGenerator.Data;
 using SoccerDataGenerator.Factories;
 using SoccerDataGenerator.Generators;
+using SoccerDataGenerator.Generators.PersonGenerators;
 using SoccerDataGenerator.Utils;
 
 namespace SoccerDataGenerator.Tests.Generators
