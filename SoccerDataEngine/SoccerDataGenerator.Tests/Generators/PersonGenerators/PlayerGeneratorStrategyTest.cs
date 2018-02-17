@@ -21,7 +21,7 @@ namespace SoccerDataGenerator.Tests.Generators.PersonGenerators
         {
             var player = PersonStrategyFactory<Player>.CreatePlayer(ePerson.Player, RandomUtil.GetRandomInt(5, 25), mainPosition);
             Assert.IsNotNull(player);
-            Assert.IsNotNull(player.MainPosition);
+            Assert.IsNotNull(player.MainFunction);
             Assert.IsNotEmpty(player.Positions);
             Assert.GreaterOrEqual(player.Positions.Count, 1);
             Assert.IsNotEmpty(player.PersonAttributes);
@@ -46,7 +46,7 @@ namespace SoccerDataGenerator.Tests.Generators.PersonGenerators
         [TestCase(Position.Forward)]
         public void SetPlayerAttributes_SetsAllPlayerAttributes(int mainPosition)
         {
-            var player = new Player { MainPosition = mainPosition };
+            var player = new Player { MainFunction = mainPosition };
             var generatorStrategy = new PlayerGeneratorStrategy();
             generatorStrategy.SetPersonAttributes(RandomUtil.GetRandomInt(5,125), player);
             Assert.IsNotNull(player.PersonAttributes);
@@ -75,7 +75,7 @@ namespace SoccerDataGenerator.Tests.Generators.PersonGenerators
         [TestCase(Position.Forward)]
         public void SetPlayerPositionsByMainPosition_SetsPlayerPositionsByMainPosition(int mainPosition)
         {
-            var player = new Player{MainPosition = mainPosition};
+            var player = new Player{MainFunction = mainPosition};
             PersonStrategyFactory<Player>.SetPersonAttributes(ePerson.Player, player);
             Assert.IsNotEmpty(player.Positions);
             Assert.GreaterOrEqual(player.Positions.Count, 1);
@@ -121,7 +121,7 @@ namespace SoccerDataGenerator.Tests.Generators.PersonGenerators
         {
             var player = new Player
             {
-                MainPosition = mainPosition,
+                MainFunction = mainPosition,
                 Positions = new List<int> {position}
             };
             var newPosition = PlayerGeneratorStrategy.GetNewPlayerPositionValueIfNeeded(player, position,type.GetFields());

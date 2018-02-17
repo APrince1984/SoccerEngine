@@ -8,7 +8,7 @@ using SoccerDataGenerator.Utils;
 namespace SoccerDataGenerator.Tests.Generators.AssemblyGenerators
 {
     [TestFixture]
-    public class PlayerGeneratorTest
+    public class SquadAssemblyGeneratorStrategyTest
     {
         [Test]
         public void CreateAllPlayersInAssembly_ReturnsListOfPlayers()
@@ -23,10 +23,8 @@ namespace SoccerDataGenerator.Tests.Generators.AssemblyGenerators
             var players = AssemblyGeneratorBase<Player>.CreateAllPersonsInAssembly(squadAssembly, RandomUtil.GetRandomInt(5, 125), ePerson.Player);
             Assert.IsNotEmpty(players);
             Assert.AreEqual(10, players.Count);
-            Assert.AreEqual(2, players.Count(p => p.MainPosition == Position.Goaly));
-            Assert.AreEqual(3, players.Count(p => p.MainPosition == Position.Defence));
-            Assert.AreEqual(3, players.Count(p => p.MainPosition == Position.Midfield));
-            Assert.AreEqual(2, players.Count(p => p.MainPosition == Position.Forward));
+            foreach (var element in squadAssembly)
+                Assert.AreEqual(element.Value, players.Count(p => p.MainFunction == element.Key));
         }
 
         [Test]
@@ -43,7 +41,7 @@ namespace SoccerDataGenerator.Tests.Generators.AssemblyGenerators
             squadGenerator.CompleteAssembly(squadAssembly);
             var numberOfPlayers = CountNumberOfPlayersInSquadAssembly(squadAssembly);
 
-            Assert.AreEqual(20, numberOfPlayers);
+            Assert.AreEqual(AssemblyGeneratorBase<Player>.NumberOfPersonsInAssembly, numberOfPlayers);
         }
 
         private static int CountNumberOfPlayersInSquadAssembly(Dictionary<int, int> squadAssembly)
@@ -107,10 +105,10 @@ namespace SoccerDataGenerator.Tests.Generators.AssemblyGenerators
             var players = squadGenerator.GenerateAssembly(ePerson.Player, RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5));
             Assert.IsNotEmpty(players);
             Assert.GreaterOrEqual(players.Count, 20);
-            Assert.GreaterOrEqual(players.Count(p => p.MainPosition == Position.Goaly), 2);
-            Assert.GreaterOrEqual(players.Count(p => p.MainPosition == Position.Defence), 5);
-            Assert.GreaterOrEqual(players.Count(p => p.MainPosition == Position.Midfield), 5);
-            Assert.GreaterOrEqual(players.Count(p => p.MainPosition == Position.Forward), 3);
+            Assert.GreaterOrEqual(players.Count(p => p.MainFunction == Position.Goaly), 2);
+            Assert.GreaterOrEqual(players.Count(p => p.MainFunction == Position.Defence), 5);
+            Assert.GreaterOrEqual(players.Count(p => p.MainFunction == Position.Midfield), 5);
+            Assert.GreaterOrEqual(players.Count(p => p.MainFunction == Position.Forward), 3);
         }
     }
 }

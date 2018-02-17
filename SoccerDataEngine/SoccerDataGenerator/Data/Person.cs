@@ -17,6 +17,8 @@ namespace SoccerDataGenerator.Data
         [ForeignKey("PersonNationality")]
         public int IdNationality { get; set; }
 
+        public int MainFunction { get; set; }
+
         public virtual Country PersonNationality { get; set; }
 
         public Dictionary<string, int> PersonAttributes { get; set; }

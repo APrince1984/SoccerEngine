@@ -8,7 +8,7 @@ namespace SoccerDataGenerator.Generators.AssemblyGenerators
 {
     public abstract class AssemblyGeneratorBase<TEntity> : IAssemblyGenerator<TEntity> where TEntity : Person, new()
     {
-        protected static int NumberOfPersonsInAssembly { get; set; }
+        protected internal static int NumberOfPersonsInAssembly { get; set; }
 
         public List<TEntity> GenerateAssembly(ePerson personType, int countryRating, int? competitionRation = null, int? teamRating = null)
         {

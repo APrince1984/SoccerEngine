@@ -3,6 +3,6 @@
     public enum ePerson
     {
         Player,
-        Coach
+        Staff
     }
 }

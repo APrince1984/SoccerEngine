@@ -12,7 +12,7 @@ namespace SoccerDataGenerator.Factories
         static PersonStrategyFactory()
         {
             PersonDictionary.Add(ePerson.Player, new PlayerGeneratorStrategy());
-            PersonDictionary.Add(ePerson.Coach, new StaffGeneratorStrategy());
+            PersonDictionary.Add(ePerson.Staff, new StaffGeneratorStrategy());
         }
 
         public static TEntity CreatePlayer(ePerson personType, int totalRating, int mainFunction)

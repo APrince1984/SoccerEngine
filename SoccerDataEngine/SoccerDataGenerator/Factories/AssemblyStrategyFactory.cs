@@ -12,7 +12,7 @@ namespace SoccerDataGenerator.Factories
         static AssemblyStrategyFactory()
         {
             AssemblyDictionary.Add(ePerson.Player, new SquadAssemblyGeneratorStrategy());
-            AssemblyDictionary.Add(ePerson.Coach, new StaffAssemblyGeneratorStrategy());
+            AssemblyDictionary.Add(ePerson.Staff, new StaffAssemblyGeneratorStrategy());
         }
 
         public static List<TEntity> GenerateAssembly(ePerson personType, int countryRating,

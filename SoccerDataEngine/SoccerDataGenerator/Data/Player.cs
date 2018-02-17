@@ -10,8 +10,6 @@ namespace SoccerDataGenerator.Data
 
         public virtual Team PlayerTeam { get; set; }
         
-        public int MainPosition { get; set; }
-
         public List<int> Positions { get; set; }
         
         public int CurrentAbility { get; set; }
