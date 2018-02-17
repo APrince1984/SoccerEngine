@@ -5,10 +5,10 @@ using SoccerDataGenerator.Data;
 using SoccerDataGenerator.Generators;
 using SoccerDataGenerator.Utils;
 
-namespace YouthGenerator.Tests.Engine
+namespace SoccerDataGenerator.Tests.Engine
 {
     [TestFixture]
-    public class YouthTeamGeneratorEngineTest
+    public class SquadGeneratorEngineTest
     {
         [Test]
         public void CreateAllPlayersInAssembly_ReturnsListOfPlayers()
@@ -98,9 +98,9 @@ namespace YouthGenerator.Tests.Engine
         }
 
         [Test]
-        public void GenerateYouthTeam_ReturnsListOfPlayersContainingAtLeast20Players()
+        public void GenerateSquad_ReturnsListOfPlayersContainingAtLeast20Players()
         {
-            var players = SquadGenerator.GenerateYouthTeam(RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5));
+            var players = SquadGenerator.GenerateSquad(RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5));
             Assert.IsNotEmpty(players);
             Assert.GreaterOrEqual(players.Count, 20);
             Assert.GreaterOrEqual(players.Count(p => p.MainPosition == Position.Goaly), 2);

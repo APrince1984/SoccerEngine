@@ -51,9 +51,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine\PlayerAttributeGeneratorEngineTest.cs" />
-    <Compile Include="Engine\YouthGeneratorEngineTest.cs" />
-    <Compile Include="Engine\YouthTeamGeneratorEngineTest.cs" />
+    <Compile Include="Generators\PlayerAttributeGeneratorEngineTest.cs" />
+    <Compile Include="Generators\PlayerGeneratorStrategyTest.cs" />
+    <Compile Include="Generators\SquadGeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

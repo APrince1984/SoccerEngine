@@ -5,7 +5,7 @@ using NUnit.Framework;
 using SoccerDataGenerator.Data;
 using SoccerDataGenerator.Generators;
 
-namespace YouthGenerator.Tests.Engine
+namespace SoccerDataGenerator.Tests.Engine
 {
     [TestFixture]
     public class PlayerAttributeGeneratorEngineTest
