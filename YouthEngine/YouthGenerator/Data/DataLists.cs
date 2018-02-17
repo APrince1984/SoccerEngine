@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using YouthGenerator.Engine;
+using YouthGenerator.Utils;
 
 namespace YouthGenerator.Data
 {
@@ -283,17 +284,17 @@ namespace YouthGenerator.Data
 
         public static string GetFirstName()
         {
-            return FirstName[RandomEngine.GetRandomInt(0, FirstName.Count - 1)];
+            return FirstName[RandomUtil.GetRandomInt(0, FirstName.Count - 1)];
         }
 
         public static string GetLastName()
         {
-            return Lastname[RandomEngine.GetRandomInt(0, Lastname.Count - 1)];
+            return Lastname[RandomUtil.GetRandomInt(0, Lastname.Count - 1)];
         }
 
         public static Country GetCountry()
         {
-            return Countries[RandomEngine.GetRandomInt(0, Countries.Count - 1)];
+            return Countries[RandomUtil.GetRandomInt(0, Countries.Count - 1)];
         }
     }
 }

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouthGenerator", "YouthGenerator\YouthGenerator.csproj", "{6C9BBEE6-4C97-4923-8A6B-1A5FFD3D9E4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonGenerator", "YouthGenerator\PersonGenerator.csproj", "{6C9BBEE6-4C97-4923-8A6B-1A5FFD3D9E4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouthGenerator.Tests", "YouthGenerator.Tests\YouthGenerator.Tests.csproj", "{319BAED9-9E21-4121-BCA9-BEC75ECC13DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonGenerator.Tests", "YouthGenerator.Tests\PersonGenerator.Tests.csproj", "{319BAED9-9E21-4121-BCA9-BEC75ECC13DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

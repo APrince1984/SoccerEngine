@@ -60,9 +60,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YouthGenerator\YouthGenerator.csproj">
+    <ProjectReference Include="..\YouthGenerator\PersonGenerator.csproj">
       <Project>{6c9bbee6-4c97-4923-8a6b-1a5ffd3d9e4b}</Project>
-      <Name>YouthGenerator</Name>
+      <Name>PersonGenerator</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

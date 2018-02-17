@@ -3,6 +3,7 @@ using System.Linq;
 using NUnit.Framework;
 using YouthGenerator.Data;
 using YouthGenerator.Engine;
+using YouthGenerator.Utils;
 
 namespace YouthGenerator.Tests.Engine
 {
@@ -19,7 +20,7 @@ namespace YouthGenerator.Tests.Engine
                 {Position.Midfield, 3},
                 {Position.Forward, 2},
             };
-            var players = YouthTeamGeneratorEngine.CreateAllPlayersInAssembly(squadAssembly, RandomEngine.GetRandomInt(5, 125));
+            var players = YouthTeamGeneratorEngine.CreateAllPlayersInAssembly(squadAssembly, RandomUtil.GetRandomInt(5, 125));
             Assert.IsNotEmpty(players);
             Assert.AreEqual(10, players.Count);
             Assert.AreEqual(2, players.Count(p => p.MainPosition == Position.Goaly));
@@ -99,7 +100,7 @@ namespace YouthGenerator.Tests.Engine
         [Test]
         public void GenerateYouthTeam_ReturnsListOfPlayersContainingAtLeast20Players()
         {
-            var players = YouthTeamGeneratorEngine.GenerateYouthTeam(RandomEngine.GetRandomInt(1, 5), RandomEngine.GetRandomInt(1, 5), RandomEngine.GetRandomInt(1, 5));
+            var players = YouthTeamGeneratorEngine.GenerateYouthTeam(RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5));
             Assert.IsNotEmpty(players);
             Assert.GreaterOrEqual(players.Count, 20);
             Assert.GreaterOrEqual(players.Count(p => p.MainPosition == Position.Goaly), 2);

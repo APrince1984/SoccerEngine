@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using YouthGenerator.Data;
+using YouthGenerator.Utils;
 
 namespace YouthGenerator.Engine
 {
@@ -19,7 +20,7 @@ namespace YouthGenerator.Engine
             var players = new List<Player>();
             foreach (var assembly in squadAssembly)
                 for (var i = 0; i < assembly.Value; i++)
-                    players.Add(YouthGeneratorEngine.CreatePlayer(totalRating, assembly.Key));
+                    players.Add(PersonStrategyFactory<Player>.CreatePlayer(ePerson.Player, totalRating, assembly.Key));
 
             return players;
         }
@@ -29,7 +30,7 @@ namespace YouthGenerator.Engine
             var totalNbrOfPlayers = CountNumberOfPlayers(squadAssembly);
             while (totalNbrOfPlayers < 20)
             {
-                squadAssembly[squadAssembly.Keys.ElementAt(RandomEngine.GetRandomInt(0, (squadAssembly.Count - 1)))] += 1;
+                squadAssembly[squadAssembly.Keys.ElementAt(RandomUtil.GetRandomInt(0, (squadAssembly.Count - 1)))] += 1;
                 totalNbrOfPlayers++;
             }
         }
@@ -46,10 +47,10 @@ namespace YouthGenerator.Engine
         {
             return new Dictionary<int, int>
             {
-                { Position.Goaly, RandomEngine.GetRandomInt(2, 3) },
-                { Position.Defence, RandomEngine.GetRandomInt(5, 7) },
-                { Position.Midfield, RandomEngine.GetRandomInt(5, 7) },
-                { Position.Forward, RandomEngine.GetRandomInt(3, 4) },
+                { Position.Goaly, RandomUtil.GetRandomInt(2, 3) },
+                { Position.Defence, RandomUtil.GetRandomInt(5, 7) },
+                { Position.Midfield, RandomUtil.GetRandomInt(5, 7) },
+                { Position.Forward, RandomUtil.GetRandomInt(3, 4) },
             };
         }
     }
