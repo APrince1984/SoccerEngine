@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using YouthGenerator.Data;
-using YouthGenerator.Engine;
+using SoccerDataGenerator.Data;
+using SoccerDataGenerator.Engine;
+using SoccerDataGenerator.Generators;
 
-namespace YouthGenerator.Factory
+namespace SoccerDataGenerator.Factories
 {
     public static class PersonStrategyFactory<TEntity> where TEntity : Person, new()
     {

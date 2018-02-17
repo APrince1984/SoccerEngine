@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using YouthGenerator.Utils;
+using SoccerDataGenerator.Utils;
 
-namespace YouthGenerator.Engine
+namespace SoccerDataGenerator.Generators
 {
     public static class PlayerAttributeGenerator
     {

@@ -1,4 +1,4 @@
-﻿namespace YouthGenerator.Engine
+﻿namespace SoccerDataGenerator.Engine
 {
     public abstract class PersonGeneratorEngineStrategyBase<TEntity> : IPersonGeneratorEngineStrategy<TEntity> where TEntity : class , new()
     {

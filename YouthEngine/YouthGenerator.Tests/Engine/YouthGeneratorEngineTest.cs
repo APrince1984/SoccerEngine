@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using YouthGenerator.Data;
-using YouthGenerator.Engine;
-using YouthGenerator.Factory;
-using YouthGenerator.Utils;
+using SoccerDataGenerator.Data;
+using SoccerDataGenerator.Factories;
+using SoccerDataGenerator.Generators;
+using SoccerDataGenerator.Utils;
 
 namespace YouthGenerator.Tests.Engine
 {

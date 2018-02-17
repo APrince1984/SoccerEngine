@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace YouthGenerator.Extensions
+namespace SoccerDataGenerator.Extensions
 {
     public static class StringExtensions
     {

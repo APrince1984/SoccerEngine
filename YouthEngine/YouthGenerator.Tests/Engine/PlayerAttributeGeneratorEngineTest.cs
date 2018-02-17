@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using YouthGenerator.Data;
-using YouthGenerator.Engine;
+using SoccerDataGenerator.Data;
+using SoccerDataGenerator.Generators;
 
 namespace YouthGenerator.Tests.Engine
 {

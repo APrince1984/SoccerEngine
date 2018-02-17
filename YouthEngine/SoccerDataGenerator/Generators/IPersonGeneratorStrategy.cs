@@ -1,6 +1,6 @@
-﻿using YouthGenerator.Data;
+﻿using SoccerDataGenerator.Data;
 
-namespace YouthGenerator.Engine
+namespace SoccerDataGenerator.Engine
 {
     public interface IPersonGeneratorEngineStrategy<TEntity>
     {

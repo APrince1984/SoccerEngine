@@ -1,4 +1,4 @@
-﻿namespace YouthGenerator.Data
+﻿namespace SoccerDataGenerator.Data
 {
     public enum ePerson
     {

@@ -1,7 +1,7 @@
 ﻿using System;
-using YouthGenerator.Data;
+using SoccerDataGenerator.Data;
 
-namespace YouthGenerator.Utils
+namespace SoccerDataGenerator.Utils
 {
     public static class RandomUtil
     {

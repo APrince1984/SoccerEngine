@@ -7,8 +7,8 @@
     <ProjectGuid>{6C9BBEE6-4C97-4923-8A6B-1A5FFD3D9E4B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YouthGenerator</RootNamespace>
-    <AssemblyName>YouthGenerator</AssemblyName>
+    <RootNamespace>SoccerDataGenerator</RootNamespace>
+    <AssemblyName>SoccerDataGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using YouthGenerator.Data;
-using YouthGenerator.Extensions;
-using YouthGenerator.Utils;
+using SoccerDataGenerator.Data;
+using SoccerDataGenerator.Engine;
+using SoccerDataGenerator.Extensions;
+using SoccerDataGenerator.Utils;
 
-namespace YouthGenerator.Engine
+namespace SoccerDataGenerator.Generators
 {
     
     public class PlayerGeneratorStrategy : IPersonGeneratorEngineStrategy<Player>

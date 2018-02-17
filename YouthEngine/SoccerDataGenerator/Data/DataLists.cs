@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using YouthGenerator.Engine;
-using YouthGenerator.Utils;
-
-namespace YouthGenerator.Data
+using SoccerDataGenerator.Utils;
+namespace SoccerDataGenerator.Data
 {
     public static class DataLists
     {

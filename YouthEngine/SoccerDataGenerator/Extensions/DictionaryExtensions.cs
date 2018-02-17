@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace YouthGenerator.Extensions
+namespace SoccerDataGenerator.Extensions
 {
     public static class DictionaryExtensions
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace YouthGenerator.Data
+namespace SoccerDataGenerator.Data
 {
     public class Contract
     {

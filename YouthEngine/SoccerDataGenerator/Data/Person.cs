@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace YouthGenerator.Data
+namespace SoccerDataGenerator.Data
 {
     public class Person
     {

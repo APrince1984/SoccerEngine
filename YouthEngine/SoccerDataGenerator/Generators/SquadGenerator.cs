@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using YouthGenerator.Data;
-using YouthGenerator.Factory;
-using YouthGenerator.Utils;
+using SoccerDataGenerator.Data;
+using SoccerDataGenerator.Factories;
+using SoccerDataGenerator.Utils;
 
-namespace YouthGenerator.Engine
+namespace SoccerDataGenerator.Generators
 {
     public static class SquadGenerator
     {
