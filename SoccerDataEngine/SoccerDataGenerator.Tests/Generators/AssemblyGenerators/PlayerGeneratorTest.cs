@@ -2,14 +2,13 @@
 using System.Linq;
 using NUnit.Framework;
 using SoccerDataGenerator.Data;
-using SoccerDataGenerator.Generators;
 using SoccerDataGenerator.Generators.AssemblyGenerators;
 using SoccerDataGenerator.Utils;
 
-namespace SoccerDataGenerator.Tests.Generators
+namespace SoccerDataGenerator.Tests.Generators.AssemblyGenerators
 {
     [TestFixture]
-    public class SquadGeneratorTest
+    public class PlayerGeneratorTest
     {
         [Test]
         public void CreateAllPlayersInAssembly_ReturnsListOfPlayers()
