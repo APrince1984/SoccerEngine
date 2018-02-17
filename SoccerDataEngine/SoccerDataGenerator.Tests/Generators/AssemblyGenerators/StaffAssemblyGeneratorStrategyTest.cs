@@ -150,5 +150,35 @@ namespace SoccerDataGenerator.Tests.Generators.AssemblyGenerators
             Assert.AreEqual(1, staff.Count(s => s.MainFunction == SpecificStaffFunction.ManagerFunctions.AssistentManager));
             Assert.AreEqual(1, staff.Count(s => s.MainFunction == SpecificStaffFunction.CoachFunctions.GoalKeepingCoach));
         }
+
+        [Test]
+        public void AddPersonToAssembly_NoAllAssemblyElementsHaveValue_PersonIsAddedToEmptyAssembly()
+        {
+            var assembly = new Dictionary<int, int>
+            {
+                {SpecificStaffFunction.ManagerFunctions.HeadManager, 1},
+                {SpecificStaffFunction.ManagerFunctions.AssistentManager, 1},
+                {SpecificStaffFunction.ManagerFunctions.YouthManager, 0}
+            };
+            var generator = new StaffAssemblyGeneratorStrategy();
+            generator.AddPersonToAssembly(assembly);
+            Assert.AreEqual(1, assembly[SpecificStaffFunction.ManagerFunctions.HeadManager]);
+            Assert.AreEqual(1, assembly[SpecificStaffFunction.ManagerFunctions.AssistentManager]);
+            Assert.AreEqual(1, assembly[SpecificStaffFunction.ManagerFunctions.YouthManager]);
+        }
+
+        [Test]
+        public void AddPersonToAssembly_AllAssemblyElementsHaveValue_PersonIsAdded()
+        {
+            var assembly = new Dictionary<int, int>
+            {
+                {SpecificStaffFunction.ManagerFunctions.HeadManager, 1},
+                {SpecificStaffFunction.ManagerFunctions.AssistentManager, 1},
+                {SpecificStaffFunction.ManagerFunctions.YouthManager, 1}
+            };
+            var generator = new StaffAssemblyGeneratorStrategy();
+            generator.AddPersonToAssembly(assembly);
+            Assert.AreEqual(4, StaffAssemblyGeneratorStrategy.CountNumberOfPersonsInAssembly(assembly));
+        }
     }
 }
