@@ -4,7 +4,7 @@ using YouthGenerator.Utils;
 
 namespace YouthGenerator.Engine
 {
-    public static class PlayerAttributeGeneratorEngine
+    public static class PlayerAttributeGenerator
     {
         public static Dictionary<string, int> AddPlayerAttributesByPlayerType(Type type, int totalRating, bool mainPosition)
         {

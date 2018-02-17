@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using YouthGenerator.Data;
 using YouthGenerator.Engine;
 
-namespace YouthGenerator.Data
+namespace YouthGenerator.Factory
 {
     public static class PersonStrategyFactory<TEntity> where TEntity : Person, new()
     {
@@ -10,8 +10,8 @@ namespace YouthGenerator.Data
 
         static PersonStrategyFactory()
         {
-            _personDictionary.Add(ePerson.Player, new YouthGeneratorEngineStrategy());
-            _personDictionary.Add(ePerson.Coach, new YouthGeneratorEngineStrategy());
+            _personDictionary.Add(ePerson.Player, new PlayerGeneratorStrategy());
+            _personDictionary.Add(ePerson.Coach, new PlayerGeneratorStrategy());
         }
 
         public static TEntity CreatePlayer(ePerson personType, int totalRating, int mainFunction)

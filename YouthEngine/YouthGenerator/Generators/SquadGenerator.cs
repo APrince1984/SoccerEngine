@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using YouthGenerator.Data;
+using YouthGenerator.Factory;
 using YouthGenerator.Utils;
 
 namespace YouthGenerator.Engine
 {
-    public static class YouthTeamGeneratorEngine
+    public static class SquadGenerator
     {
         public static List<Player> GenerateYouthTeam(int countryRating, int competitionRating, int teamrating)
         {

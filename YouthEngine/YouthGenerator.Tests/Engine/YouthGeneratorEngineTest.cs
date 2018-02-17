@@ -4,6 +4,7 @@ using System.Linq;
 using NUnit.Framework;
 using YouthGenerator.Data;
 using YouthGenerator.Engine;
+using YouthGenerator.Factory;
 using YouthGenerator.Utils;
 
 namespace YouthGenerator.Tests.Engine
@@ -46,7 +47,7 @@ namespace YouthGenerator.Tests.Engine
         public void SetPlayerAttributes_SetsAllPlayerAttributes(int mainPosition)
         {
             var player = new Player { MainPosition = mainPosition };
-            YouthGeneratorEngineStrategy.SetPlayerAttributes(RandomUtil.GetRandomInt(5,125), player);
+            PlayerGeneratorStrategy.SetPlayerAttributes(RandomUtil.GetRandomInt(5,125), player);
             Assert.IsNotNull(player.PlayerAttributes);
             Assert.AreEqual(28, player.PlayerAttributes.Count);
             var fields = typeof(AttributeName.GoalyAttributes).GetFields();
@@ -61,7 +62,7 @@ namespace YouthGenerator.Tests.Engine
         public void SetPlayerPositions_SetsPlayerPositions(Type positionType)
         {
             var player = new Player{Positions = new List<int>()};
-            YouthGeneratorEngineStrategy.SetPlayerPositions(player, positionType);
+            PlayerGeneratorStrategy.SetPlayerPositions(player, positionType);
             Assert.IsNotEmpty(player.Positions);
             Assert.GreaterOrEqual(player.Positions.Count, 1);
         }
@@ -122,7 +123,7 @@ namespace YouthGenerator.Tests.Engine
                 MainPosition = mainPosition,
                 Positions = new List<int> {position}
             };
-            var newPosition = YouthGeneratorEngineStrategy.GetNewPlayerPositionValueIfNeeded(player, position,type.GetFields());
+            var newPosition = PlayerGeneratorStrategy.GetNewPlayerPositionValueIfNeeded(player, position,type.GetFields());
             Assert.AreNotEqual(position, newPosition);
         }
     }

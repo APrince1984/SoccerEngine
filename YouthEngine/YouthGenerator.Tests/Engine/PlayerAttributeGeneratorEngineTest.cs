@@ -23,7 +23,7 @@ namespace YouthGenerator.Tests.Engine
         [TestCase(typeof(AttributeName.AttackingAttributes))]
         public void AddPlayerAttributesByPlayerType_ReturnsPlayerAttributesForGivenType(Type attributeType)
         {
-            var attributes = PlayerAttributeGeneratorEngine.AddPlayerAttributesByPlayerType(attributeType, _random.Next(1, 5), true);
+            var attributes = PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(attributeType, _random.Next(1, 5), true);
             AssertAttributesByType(attributes, attributeType);
         }
 
