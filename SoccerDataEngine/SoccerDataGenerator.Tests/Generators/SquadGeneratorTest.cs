@@ -20,7 +20,7 @@ namespace SoccerDataGenerator.Tests.Generators
                 {Position.Midfield, 3},
                 {Position.Forward, 2},
             };
-            var players = SquadGenerator.CreateAllPlayersInAssembly(squadAssembly, RandomUtil.GetRandomInt(5, 125));
+            var players = AssemblyGenerator<Player>.CreateAllPersonsInAssembly(squadAssembly, RandomUtil.GetRandomInt(5, 125), ePerson.Player);
             Assert.IsNotEmpty(players);
             Assert.AreEqual(10, players.Count);
             Assert.AreEqual(2, players.Count(p => p.MainPosition == Position.Goaly));
@@ -39,7 +39,7 @@ namespace SoccerDataGenerator.Tests.Generators
                 {Position.Midfield, 3},
                 {Position.Forward, 2},
             };
-            SquadGenerator.FillSquadAssemblyUntilSquadExistsOfAtLeast20Players(squadAssembly);
+            AssemblyGenerator<Player>.CompleteAssembly(squadAssembly);
             var numberOfPlayers = CountNumberOfPlayersInSquadAssembly(squadAssembly);
 
             Assert.AreEqual(20, numberOfPlayers);
@@ -63,7 +63,7 @@ namespace SoccerDataGenerator.Tests.Generators
                 {Position.Midfield, 5},
                 {Position.Forward, 6},
             };
-            SquadGenerator.FillSquadAssemblyUntilSquadExistsOfAtLeast20Players(squadAssembly);
+            AssemblyGenerator<Player>.CompleteAssembly(squadAssembly);
             var numberOfPlayers = CountNumberOfPlayersInSquadAssembly(squadAssembly);
 
             Assert.AreEqual(21, numberOfPlayers);
@@ -79,13 +79,14 @@ namespace SoccerDataGenerator.Tests.Generators
                 {Position.Midfield, 0},
                 {Position.Forward, 5},
             };
-            Assert.AreEqual(15, SquadGenerator.CountNumberOfPlayers(squadAssembly));
+            Assert.AreEqual(15, AssemblyGenerator<Player>.CountNumberOfPersonsInAssembly(squadAssembly));
         }
 
         [Test]
         public void BuildSquadAssembly_ReturnsSquadAssembly()
         {
-            var squadAssembly = SquadGenerator.BuildSquadAssembly();
+            var squadGenerator = new SquadGenerator();
+            var squadAssembly = squadGenerator.BuildAssembly();
             Assert.IsNotEmpty(squadAssembly);
             Assert.GreaterOrEqual(squadAssembly[Position.Goaly], 2);
             Assert.GreaterOrEqual(squadAssembly[Position.Defence], 5);
@@ -100,7 +101,8 @@ namespace SoccerDataGenerator.Tests.Generators
         [Test]
         public void GenerateSquad_ReturnsListOfPlayersContainingAtLeast20Players()
         {
-            var players = SquadGenerator.GenerateSquad(RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5));
+            var squadGenerator = new SquadGenerator();
+            var players = squadGenerator.GenerateAssembly(ePerson.Player, RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5), RandomUtil.GetRandomInt(1, 5));
             Assert.IsNotEmpty(players);
             Assert.GreaterOrEqual(players.Count, 20);
             Assert.GreaterOrEqual(players.Count(p => p.MainPosition == Position.Goaly), 2);

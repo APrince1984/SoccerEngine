@@ -55,12 +55,14 @@
     <Compile Include="Data\DataLists.cs" />
     <Compile Include="Data\Enumerations.cs" />
     <Compile Include="Data\Person.cs" />
+    <Compile Include="Factories\AssemblyStrategyFactory.cs" />
     <Compile Include="Factories\PersonStrategyFactory.cs" />
     <Compile Include="Data\Player.cs" />
     <Compile Include="Data\PlayerContract.cs" />
     <Compile Include="Data\Team.cs" />
     <Compile Include="Generators\AssemblyGenerator.cs" />
     <Compile Include="Generators\CoachGeneratorStrategy.cs" />
+    <Compile Include="Generators\IAssemblyGenerator.cs" />
     <Compile Include="Generators\IPersonGeneratorStrategy.cs" />
     <Compile Include="Generators\PersonGeneratorStrategyBase.cs" />
     <Compile Include="Generators\PlayerAttributeGenerator.cs" />

@@ -47,7 +47,8 @@ namespace SoccerDataGenerator.Tests.Generators
         public void SetPlayerAttributes_SetsAllPlayerAttributes(int mainPosition)
         {
             var player = new Player { MainPosition = mainPosition };
-            PlayerGeneratorStrategy.SetPersonAttributes(RandomUtil.GetRandomInt(5,125), player);
+            var generatorStrategy = new PlayerGeneratorStrategy();
+            generatorStrategy.SetPersonAttributes(RandomUtil.GetRandomInt(5,125), player);
             Assert.IsNotNull(player.PersonAttributes);
             Assert.AreEqual(28, player.PersonAttributes.Count);
             var fields = typeof(AttributeName.GoalyAttributes).GetFields();

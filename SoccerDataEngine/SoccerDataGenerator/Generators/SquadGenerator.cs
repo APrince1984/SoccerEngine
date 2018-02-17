@@ -1,50 +1,53 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using SoccerDataGenerator.Data;
-using SoccerDataGenerator.Factories;
 using SoccerDataGenerator.Utils;
 
 namespace SoccerDataGenerator.Generators
 {
-    public static class SquadGenerator
+    public class SquadGenerator : AssemblyGenerator<Player>
     {
-        public static List<Player> GenerateSquad(int countryRating, int competitionRating, int teamrating)
+        public SquadGenerator()
         {
-            var totalRating = teamrating * competitionRating * countryRating;
-            var squadAssembly = BuildSquadAssembly();
-            FillSquadAssemblyUntilSquadExistsOfAtLeast20Players(squadAssembly);
-            return CreateAllPlayersInAssembly(squadAssembly, totalRating);
+            NumberOfPersonsInAssembly = 20;
         }
 
-        internal static List<Player> CreateAllPlayersInAssembly(Dictionary<int, int> squadAssembly, int totalRating)
-        {
-            var players = new List<Player>();
-            foreach (var assembly in squadAssembly)
-                for (var i = 0; i < assembly.Value; i++)
-                    players.Add(PersonStrategyFactory<Player>.CreatePlayer(ePerson.Player, totalRating, assembly.Key));
+        //public static List<Player> GenerateSquad(int countryRating, int competitionRating, int teamrating)
+        //{
+        //    var totalRating = teamrating * competitionRating * countryRating;
+        //    var squadAssembly = BuildSquadAssembly();
+        //    FillSquadAssemblyUntilSquadExistsOfAtLeast20Players(squadAssembly);
+        //    return CreateAllPlayersInAssembly(squadAssembly, totalRating);
+        //}
 
-            return players;
-        }
+        //internal static List<Player> CreateAllPlayersInAssembly(Dictionary<int, int> squadAssembly, int totalRating)
+        //{
+        //    var players = new List<Player>();
+        //    foreach (var assembly in squadAssembly)
+        //        for (var i = 0; i < assembly.Value; i++)
+        //            players.Add(PersonStrategyFactory<Player>.CreatePlayer(ePerson.Player, totalRating, assembly.Key));
 
-        internal static void FillSquadAssemblyUntilSquadExistsOfAtLeast20Players(Dictionary<int, int> squadAssembly)
-        {
-            var totalNbrOfPlayers = CountNumberOfPlayers(squadAssembly);
-            while (totalNbrOfPlayers < 20)
-            {
-                squadAssembly[squadAssembly.Keys.ElementAt(RandomUtil.GetRandomInt(0, (squadAssembly.Count - 1)))] += 1;
-                totalNbrOfPlayers++;
-            }
-        }
+        //    return players;
+        //}
 
-        internal static int CountNumberOfPlayers(Dictionary<int, int> squadAssembly)
-        {
-            var totalNbrOfPlayers = 0;
-            foreach (var assembly in squadAssembly)
-                totalNbrOfPlayers += assembly.Value;
-            return totalNbrOfPlayers;
-        }
+        //internal static void FillSquadAssemblyUntilSquadExistsOfAtLeast20Players(Dictionary<int, int> squadAssembly)
+        //{
+        //    var totalNbrOfPlayers = CountNumberOfPlayers(squadAssembly);
+        //    while (totalNbrOfPlayers < 20)
+        //    {
+        //        squadAssembly[squadAssembly.Keys.ElementAt(RandomUtil.GetRandomInt(0, (squadAssembly.Count - 1)))] += 1;
+        //        totalNbrOfPlayers++;
+        //    }
+        //}
 
-        internal static Dictionary<int, int> BuildSquadAssembly()
+        //internal static int CountNumberOfPlayers(Dictionary<int, int> squadAssembly)
+        //{
+        //    var totalNbrOfPlayers = 0;
+        //    foreach (var assembly in squadAssembly)
+        //        totalNbrOfPlayers += assembly.Value;
+        //    return totalNbrOfPlayers;
+        //}
+
+        protected internal override Dictionary<int, int> BuildAssembly()
         {
             return new Dictionary<int, int>
             {
