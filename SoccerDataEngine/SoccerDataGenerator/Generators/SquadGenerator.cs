@@ -8,7 +8,7 @@ namespace SoccerDataGenerator.Generators
 {
     public static class SquadGenerator
     {
-        public static List<Player> GenerateYouthTeam(int countryRating, int competitionRating, int teamrating)
+        public static List<Player> GenerateSquad(int countryRating, int competitionRating, int teamrating)
         {
             var totalRating = teamrating * competitionRating * countryRating;
             var squadAssembly = BuildSquadAssembly();

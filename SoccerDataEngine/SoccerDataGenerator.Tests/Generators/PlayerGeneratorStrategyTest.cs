@@ -7,7 +7,7 @@ using SoccerDataGenerator.Factories;
 using SoccerDataGenerator.Generators;
 using SoccerDataGenerator.Utils;
 
-namespace SoccerDataGenerator.Tests.Engine
+namespace SoccerDataGenerator.Tests.Generators
 {
     [TestFixture]
     public class SoccerDataGeneratorEngineTest
@@ -47,7 +47,7 @@ namespace SoccerDataGenerator.Tests.Engine
         public void SetPlayerAttributes_SetsAllPlayerAttributes(int mainPosition)
         {
             var player = new Player { MainPosition = mainPosition };
-            SoccerDataGeneratorStrategy.SetPlayerAttributes(RandomUtil.GetRandomInt(5,125), player);
+            PlayerGeneratorStrategy.SetPlayerAttributes(RandomUtil.GetRandomInt(5,125), player);
             Assert.IsNotNull(player.PlayerAttributes);
             Assert.AreEqual(28, player.PlayerAttributes.Count);
             var fields = typeof(AttributeName.GoalyAttributes).GetFields();
@@ -62,7 +62,7 @@ namespace SoccerDataGenerator.Tests.Engine
         public void SetPlayerPositions_SetsPlayerPositions(Type positionType)
         {
             var player = new Player{Positions = new List<int>()};
-            SoccerDataGeneratorStrategy.SetPlayerPositions(player, positionType);
+            PlayerGeneratorStrategy.SetPlayerPositions(player, positionType);
             Assert.IsNotEmpty(player.Positions);
             Assert.GreaterOrEqual(player.Positions.Count, 1);
         }
@@ -123,7 +123,7 @@ namespace SoccerDataGenerator.Tests.Engine
                 MainPosition = mainPosition,
                 Positions = new List<int> {position}
             };
-            var newPosition = SoccerDataGeneratorStrategy.GetNewPlayerPositionValueIfNeeded(player, position,type.GetFields());
+            var newPosition = PlayerGeneratorStrategy.GetNewPlayerPositionValueIfNeeded(player, position,type.GetFields());
             Assert.AreNotEqual(position, newPosition);
         }
     }
