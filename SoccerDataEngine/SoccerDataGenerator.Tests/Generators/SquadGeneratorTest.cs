@@ -5,10 +5,10 @@ using SoccerDataGenerator.Data;
 using SoccerDataGenerator.Generators;
 using SoccerDataGenerator.Utils;
 
-namespace SoccerDataGenerator.Tests.Engine
+namespace SoccerDataGenerator.Tests.Generators
 {
     [TestFixture]
-    public class SquadGeneratorEngineTest
+    public class SquadGeneratorTest
     {
         [Test]
         public void CreateAllPlayersInAssembly_ReturnsListOfPlayers()

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using SoccerDataGenerator.Data;
-using SoccerDataGenerator.Engine;
 using SoccerDataGenerator.Generators;
 
 namespace SoccerDataGenerator.Factories
@@ -12,22 +11,22 @@ namespace SoccerDataGenerator.Factories
         static PersonStrategyFactory()
         {
             _personDictionary.Add(ePerson.Player, new PlayerGeneratorStrategy());
-            _personDictionary.Add(ePerson.Coach, new PlayerGeneratorStrategy());
+            _personDictionary.Add(ePerson.Coach, new CoachGeneratorStrategy());
         }
 
         public static TEntity CreatePlayer(ePerson personType, int totalRating, int mainFunction)
         {
-           return ((IPersonGeneratorEngineStrategy<TEntity>) _personDictionary[personType]).CreatePerson(totalRating, mainFunction);
+           return ((IPersonGeneratorStrategy<TEntity>) _personDictionary[personType]).CreatePerson(totalRating, mainFunction);
         }
 
         public static void SetPersonalInformation(ePerson personType, TEntity person)
         {
-            ((IPersonGeneratorEngineStrategy<TEntity>)_personDictionary[personType]).SetPersonPersonalInformation(person);
+            ((IPersonGeneratorStrategy<TEntity>)_personDictionary[personType]).SetPersonalInformation(person);
         }
 
         public static void SetPersonAttributes(ePerson personType, TEntity person)
         {
-            ((IPersonGeneratorEngineStrategy<TEntity>)_personDictionary[personType]).SetPersonAttributes(person);
+            ((IPersonGeneratorStrategy<TEntity>)_personDictionary[personType]).SetPersonAttributes(person);
         }
     }
 

@@ -2,34 +2,25 @@
 using System.Collections.Generic;
 using System.Reflection;
 using SoccerDataGenerator.Data;
-using SoccerDataGenerator.Engine;
 using SoccerDataGenerator.Extensions;
 using SoccerDataGenerator.Utils;
 
 namespace SoccerDataGenerator.Generators
 {
     
-    public class PlayerGeneratorStrategy : IPersonGeneratorEngineStrategy<Player>
+    public class PlayerGeneratorStrategy : PersonGeneratorStrategyBase<Player>
     {
-        public Player CreatePerson(int totalRating, int mainPosition)
+        public override Player CreatePerson(int totalRating, int mainPosition)
         {
             var player = new Player();
             player.MainPosition = mainPosition;
-            SetPersonPersonalInformation(player);
+            SetPersonalInformation(player);
             SetPersonAttributes(player);
-            SetPlayerAttributes(totalRating, player);
+            SetPersonAttributes(totalRating, player);
             return player;
         }
 
-        public void SetPersonPersonalInformation(Player player)
-        {
-            player.FirstName = DataLists.GetFirstName();
-            player.LastName = DataLists.GetLastName();
-            player.BirthDate = DateTime.Now.Date.AddYears(-(RandomUtil.GetRandomInt(15, 16))).AddDays(RandomUtil.GetRandomInt(-365, 365));
-            player.PersonNationality = DataLists.GetCountry();
-        }
-
-        public void SetPersonAttributes(Player player)
+        public override void SetPersonAttributes(Player player)
         {
             if (player.MainPosition == Position.Goaly)
             {
@@ -79,17 +70,17 @@ namespace SoccerDataGenerator.Generators
             return (int) playerPositions[index].GetValue(playerPositions[index].Name);
         }
 
-        internal static void SetPlayerAttributes(int totalRating, Player player)
+        protected internal override void SetPersonAttributes(int totalRating, Player player)
         {
-            player.PlayerAttributes = new Dictionary<string, int>();
-            player.PlayerAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.GoalyAttributes), totalRating, player.MainPosition == Position.Goaly));
-            player.PlayerAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.FysicalAttributes), totalRating, RandomUtil.GetRandomBoolWithPossiblityToImproveChances(RandomUtil.GetRandomInt(1, 6))));
-            player.PlayerAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.MentalAttributes), totalRating, RandomUtil.GetRandomBoolWithPossiblityToImproveChances(RandomUtil.GetRandomInt(1,6))));
-            player.PlayerAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.SetPiecesAttributes), totalRating, RandomUtil.GetRandomBoolWithPossiblityToImproveChances(RandomUtil.GetRandomInt(1,6))));
-            player.PlayerAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.AttackingAttributes), totalRating, (RandomUtil.GetRandomBoolWithPossiblityToImproveChances(player.MainPosition) && player.MainPosition != Position.Goaly)));
-            player.PlayerAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.DefensiveAttributes), totalRating, player.MainPosition == Position.Defence));
-            player.PlayerAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.MidfieldAttribues), totalRating, player.MainPosition == Position.Midfield));
-            player.PlayerAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.ForwardAttributes), totalRating, player.MainPosition == Position.Forward));
+            player.PersonAttributes = new Dictionary<string, int>();
+            player.PersonAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.GoalyAttributes), totalRating, player.MainPosition == Position.Goaly));
+            player.PersonAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.FysicalAttributes), totalRating, RandomUtil.GetRandomBoolWithPossiblityToImproveChances(RandomUtil.GetRandomInt(1, 6))));
+            player.PersonAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.MentalAttributes), totalRating, RandomUtil.GetRandomBoolWithPossiblityToImproveChances(RandomUtil.GetRandomInt(1,6))));
+            player.PersonAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.SetPiecesAttributes), totalRating, RandomUtil.GetRandomBoolWithPossiblityToImproveChances(RandomUtil.GetRandomInt(1,6))));
+            player.PersonAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.AttackingAttributes), totalRating, (RandomUtil.GetRandomBoolWithPossiblityToImproveChances(player.MainPosition) && player.MainPosition != Position.Goaly)));
+            player.PersonAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.DefensiveAttributes), totalRating, player.MainPosition == Position.Defence));
+            player.PersonAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.MidfieldAttribues), totalRating, player.MainPosition == Position.Midfield));
+            player.PersonAttributes.AddRange(PlayerAttributeGenerator.AddPlayerAttributesByPlayerType(typeof(AttributeName.ForwardAttributes), totalRating, player.MainPosition == Position.Forward));
         }
     }
 }

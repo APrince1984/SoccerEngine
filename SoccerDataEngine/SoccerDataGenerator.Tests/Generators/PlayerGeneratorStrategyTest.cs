@@ -10,7 +10,7 @@ using SoccerDataGenerator.Utils;
 namespace SoccerDataGenerator.Tests.Generators
 {
     [TestFixture]
-    public class SoccerDataGeneratorEngineTest
+    public class SoccerDataGeneratorTest
     {
         [Test]
         [TestCase(Position.Goaly)]
@@ -24,8 +24,8 @@ namespace SoccerDataGenerator.Tests.Generators
             Assert.IsNotNull(player.MainPosition);
             Assert.IsNotEmpty(player.Positions);
             Assert.GreaterOrEqual(player.Positions.Count, 1);
-            Assert.IsNotEmpty(player.PlayerAttributes);
-            Assert.AreEqual(28, player.PlayerAttributes.Count);
+            Assert.IsNotEmpty(player.PersonAttributes);
+            Assert.AreEqual(28, player.PersonAttributes.Count);
         }
 
         [Test]
@@ -47,12 +47,12 @@ namespace SoccerDataGenerator.Tests.Generators
         public void SetPlayerAttributes_SetsAllPlayerAttributes(int mainPosition)
         {
             var player = new Player { MainPosition = mainPosition };
-            PlayerGeneratorStrategy.SetPlayerAttributes(RandomUtil.GetRandomInt(5,125), player);
-            Assert.IsNotNull(player.PlayerAttributes);
-            Assert.AreEqual(28, player.PlayerAttributes.Count);
+            PlayerGeneratorStrategy.SetPersonAttributes(RandomUtil.GetRandomInt(5,125), player);
+            Assert.IsNotNull(player.PersonAttributes);
+            Assert.AreEqual(28, player.PersonAttributes.Count);
             var fields = typeof(AttributeName.GoalyAttributes).GetFields();
             foreach (var field in fields)
-                Assert.IsTrue(player.PlayerAttributes.Keys.Contains(field.Name));
+                Assert.IsTrue(player.PersonAttributes.Keys.Contains(field.Name));
         }
 
         [Test]

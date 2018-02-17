@@ -1,12 +1,10 @@
-﻿using SoccerDataGenerator.Data;
-
-namespace SoccerDataGenerator.Engine
+﻿namespace SoccerDataGenerator.Generators
 {
-    public interface IPersonGeneratorEngineStrategy<TEntity>
+    public interface IPersonGeneratorStrategy<TEntity>
     {
         TEntity CreatePerson(int totalRating, int mainFunction);
 
-        void SetPersonPersonalInformation(TEntity person);
+        void SetPersonalInformation(TEntity person);
 
         void SetPersonAttributes(TEntity person);
 

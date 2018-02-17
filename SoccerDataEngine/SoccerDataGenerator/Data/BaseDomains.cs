@@ -27,6 +27,40 @@
         public const int Forward = 4;
     }
 
+    //public struct StaffFunction
+    //{
+    //    public const int Manager = 1;
+    //    public const int Coach = 2;
+    //    public const int Scout = 3;
+    //    public const int Doctor = 4;
+    //}
+
+    public struct SpecificStaffFunction
+    {
+        public struct ManagerFunctions
+        {
+            public const int HeadManager = 1;
+            public const int AssistentManager = 2;
+            public const int YouthManager = 3;
+        }
+
+        public struct CoachFunctions
+        {
+            public const int GoalKeepingCoach = 4;
+            public const int DefenceCoach = 5;
+            public const int AttackingCoach = 6;
+            public const int TechnicalCoach = 7;
+            public const int MentalCoach = 8;
+            public const int PhysicalCoach = 9;
+        }
+
+        public struct ScoutFunctions
+        {
+            public const int YouthScout = 10;
+            public const int FirstTeamScout = 11;
+        } 
+    }
+
     public struct Maximums
     {
         public const int MaximumGoalies = 3;

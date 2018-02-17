@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SoccerDataGenerator.Data
@@ -17,5 +18,7 @@ namespace SoccerDataGenerator.Data
         public int IdNationality { get; set; }
 
         public virtual Country PersonNationality { get; set; }
+
+        public Dictionary<string, int> PersonAttributes { get; set; }
     }
 }

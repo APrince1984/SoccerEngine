@@ -5,10 +5,10 @@ using NUnit.Framework;
 using SoccerDataGenerator.Data;
 using SoccerDataGenerator.Generators;
 
-namespace SoccerDataGenerator.Tests.Engine
+namespace SoccerDataGenerator.Tests.Generators
 {
     [TestFixture]
-    public class PlayerAttributeGeneratorEngineTest
+    public class PlayerAttributeGeneratorTest
     {
         private static readonly Random _random = new Random();
 
