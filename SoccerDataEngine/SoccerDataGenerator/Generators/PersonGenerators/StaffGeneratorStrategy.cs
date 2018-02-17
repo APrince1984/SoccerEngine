@@ -21,7 +21,7 @@ namespace SoccerDataGenerator.Generators.PersonGenerators
 
         protected internal override void SetPersonAttributes(int totalRating, Staff person)
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using SoccerDataGenerator.Data;
-using SoccerDataGenerator.Generators;
 using SoccerDataGenerator.Generators.AssemblyGenerators;
 
 namespace SoccerDataGenerator.Factories

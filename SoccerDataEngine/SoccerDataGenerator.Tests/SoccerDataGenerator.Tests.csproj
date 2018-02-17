@@ -51,6 +51,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\AssemblyStrategyFactoryTest.cs" />
     <Compile Include="Generators\AssemblyGenerators\SquadAssemblyGeneratorStrategyTest.cs" />
     <Compile Include="Generators\AssemblyGenerators\StaffAssemblyGeneratorStrategyTest.cs" />
     <Compile Include="Generators\PlayerAttributeGeneratorTest.cs" />
