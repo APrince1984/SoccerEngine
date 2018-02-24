@@ -51,7 +51,6 @@
     <Compile Include="Generators\AssemblyGenerators\SquadAssemblyGeneratorStrategyTest.cs" />
     <Compile Include="Generators\AssemblyGenerators\StaffAssemblyGeneratorStrategyTest.cs" />
     <Compile Include="Generators\AttributeGenerators\AttributeGeneratorTest.cs" />
-    <Compile Include="Generators\FixtureGenerators\FixtureGeneratorTest.cs" />
     <Compile Include="Generators\PersonGenerators\PlayerGeneratorStrategyTest.cs" />
     <Compile Include="Generators\PersonGenerators\StaffGeneratorStrategyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +63,9 @@
       <Project>{6c9bbee6-4c97-4923-8a6b-1a5ffd3d9e4b}</Project>
       <Name>SoccerDataGenerator</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Generators\FixtureGenerators\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -65,8 +65,9 @@
     <Compile Include="Generators\AssemblyGenerators\AssemblyGeneratorStrategyBase.cs" />
     <Compile Include="Generators\AttributeGenerators\AttributeGeneratorBase.cs" />
     <Compile Include="Generators\AttributeGenerators\IAttributeGenerator.cs" />
-    <Compile Include="Generators\FixtureGenerators\FixtureGenerator.cs" />
-    <Compile Include="Generators\FixtureGenerators\IFixtureGeneratorStrategy.cs" />
+    <Compile Include="Generators\FixtureGenerators\CompetitionFixturesGenerator.cs" />
+    <Compile Include="Generators\FixtureGenerators\FixtureGeneratorBase.cs" />
+    <Compile Include="Generators\FixtureGenerators\MatchDayFixturesGenerator.cs" />
     <Compile Include="Generators\PersonGenerators\StaffGeneratorStrategy.cs" />
     <Compile Include="Generators\AssemblyGenerators\IAssemblyGeneratorStrategy.cs" />
     <Compile Include="Generators\PersonGenerators\IPersonGeneratorStrategy.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using SoccerDataGenerator.Data;
 
 namespace SoccerDataGenerator.Utils
@@ -18,6 +19,12 @@ namespace SoccerDataGenerator.Utils
         {
             var index = Rnd.Next(obj.Count);
             return obj[index];
+        }
+
+        public static Dictionary<TKey, TValue> GetRandomDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+        {
+            var index = Rnd.Next(dictionary.Count);
+            return new Dictionary<TKey, TValue> { {dictionary.Keys.ElementAt(index), dictionary.Values.ElementAt(index)}};
         }
 
         public static bool GetRandomBoolWithPossiblityToImproveChances(int chanceImprovement = 0)
