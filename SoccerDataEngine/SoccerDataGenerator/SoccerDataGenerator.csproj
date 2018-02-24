@@ -61,11 +61,12 @@
     <Compile Include="Data\PlayerContract.cs" />
     <Compile Include="Data\Team.cs" />
     <Compile Include="Generators\AssemblyGenerators\AssemblyGeneratorStrategyBase.cs" />
+    <Compile Include="Generators\AttributeGenerators\AttributeGeneratorBase.cs" />
+    <Compile Include="Generators\AttributeGenerators\IAttributeGenerator.cs" />
     <Compile Include="Generators\PersonGenerators\StaffGeneratorStrategy.cs" />
     <Compile Include="Generators\AssemblyGenerators\IAssemblyGeneratorStrategy.cs" />
     <Compile Include="Generators\PersonGenerators\IPersonGeneratorStrategy.cs" />
     <Compile Include="Generators\PersonGenerators\PersonGeneratorStrategyBase.cs" />
-    <Compile Include="Generators\PlayerAttributeGenerator.cs" />
     <Compile Include="Generators\AssemblyGenerators\StaffAssemblyGeneratorStrategy.cs" />
     <Compile Include="Utils\RandomUtil.cs" />
     <Compile Include="Generators\PersonGenerators\PlayerGeneratorStrategy.cs" />

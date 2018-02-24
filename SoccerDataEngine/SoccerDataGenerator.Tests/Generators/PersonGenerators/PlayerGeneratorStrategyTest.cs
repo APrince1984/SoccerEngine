@@ -10,7 +10,7 @@ using SoccerDataGenerator.Utils;
 namespace SoccerDataGenerator.Tests.Generators.PersonGenerators
 {
     [TestFixture]
-    public class SoccerDataGeneratorTest
+    public class PlayerGeneratorStrategyTest
     {
         [Test]
         [TestCase(Position.Goaly)]
@@ -51,7 +51,7 @@ namespace SoccerDataGenerator.Tests.Generators.PersonGenerators
             generatorStrategy.SetPersonAttributes(RandomUtil.GetRandomInt(5,125), player);
             Assert.IsNotNull(player.PersonAttributes);
             Assert.AreEqual(28, player.PersonAttributes.Count);
-            var fields = typeof(AttributeName.GoalyAttributes).GetFields();
+            var fields = typeof(PlayerAttributeName.GoalyAttributes).GetFields();
             foreach (var field in fields)
                 Assert.IsTrue(player.PersonAttributes.Keys.Contains(field.Name));
         }

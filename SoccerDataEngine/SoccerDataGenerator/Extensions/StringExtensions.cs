@@ -5,7 +5,7 @@ namespace SoccerDataGenerator.Extensions
 {
     public static class StringExtensions
     {
-        public static string RemoveWhitespace(this string input)
+        public static string RemoveSpaces(this string input)
         {
             return new string(input.ToCharArray()
                 .Where(c => !Char.IsWhiteSpace(c))

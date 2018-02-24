@@ -69,7 +69,7 @@
         public const int MaximumForwards = 4;
     }
 
-    public struct AttributeName
+    public struct PlayerAttributeName
     {
         public struct GoalyAttributes
         {
@@ -129,6 +129,44 @@
             public const string Dribbling = "Dribbling"; // 7
             public const string Crossing = "Crossing"; // 8
             public const string Techniek = "Techniek"; // 12
+        }
+    }
+
+    public struct StaffAttributeName
+    {
+        public struct GoalKeepingAttributes
+        {
+            public const string GoalKeeping = "GoalKeeping"; 
+        }
+        public struct AttackCoachingAttributes
+        {
+            public const string Finishing = "Finishing Coaching";
+            public const string Technical = "Technical Coaching";
+            public const string Attacking = "Attack Coaching";
+        }
+
+        public struct DefenseCoachingAttributes
+        {
+            public const string Defense = "Defense Coaching";
+            public const string Tactics = "Tactical Coaching";
+        }
+
+        public struct GeneralCoachingAttributes
+        {
+            public const string Mental = "Mental Coaching";
+            public const string Physical = "Physical Coaching";
+        }
+
+        public struct ScoutingAttributes
+        {
+            public const string PlayerPotential = "Player Potential";
+            public const string CurrentPotential = "Player Current Potential";
+        }
+
+        public struct MotivationAttributes
+        {
+            public const string Motivation = "Motivating";
+            public const string Youth = "Working With YouthPlayers";
         }
     }
 
