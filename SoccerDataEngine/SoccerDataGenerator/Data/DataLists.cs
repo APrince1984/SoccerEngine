@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SoccerDataGenerator.Utils;
 namespace SoccerDataGenerator.Data
 {
@@ -273,11 +274,11 @@ namespace SoccerDataGenerator.Data
 
         public static readonly List<Country> Countries = new List<Country>
         {
-            {new Country {Name = "Belgium", ShortName = "BEL", Rating = Rating.Mediocre, IdCountry = 1} },
-            {new Country {Name = "Netherland", ShortName = "NED", Rating = Rating.Mediocre, IdCountry = 1} },
-            {new Country {Name = "France", ShortName = "FRA", Rating = Rating.Mediocre, IdCountry = 1} },
-            {new Country {Name = "Germany", ShortName = "GER", Rating = Rating.Mediocre, IdCountry = 1} },
-            {new Country {Name = "Brasil", ShortName = "BRA", Rating = Rating.Mediocre, IdCountry = 1} }
+            {new Country {Name = "Belgium", ShortName = "BEL", Rating = Rating.Good, IdCountry = 1} },
+            {new Country {Name = "Netherland", ShortName = "NED", Rating = Rating.Mediocre, IdCountry = 2} },
+            {new Country {Name = "France", ShortName = "FRA", Rating = Rating.Good, IdCountry = 3} },
+            {new Country {Name = "Germany", ShortName = "GER", Rating = Rating.VeryGood, IdCountry = 4} },
+            {new Country {Name = "Brasil", ShortName = "BRA", Rating = Rating.VeryGood, IdCountry = 5} }
         };
 
         public static string GetFirstName()
@@ -294,5 +295,214 @@ namespace SoccerDataGenerator.Data
         {
             return Countries[RandomUtil.GetRandomInt(0, Countries.Count - 1)];
         }
+
+        public static readonly List<Competition> Competitions = new List<Competition>
+        {
+            {
+                new Competition
+                {
+                    IdCompetition = 1,
+                    IdCountry = 1,
+                    Rating = Rating.VeryGood,
+                    Name = "Jupiler League",
+                    NumberOfWinterStopDays = 14,
+                    StartDate = new DateTime(2018, 6, 25),
+                    StartWinterStop = new DateTime(2018, 1, 3),
+                    NumberOfPromoters = 0,
+                    NumberOfDegradaters = 2,
+                    MatchDays = new List<DayOfWeek>
+                    {
+                        DayOfWeek.Friday,
+                        DayOfWeek.Saturday,
+                        DayOfWeek.Sunday
+                    }
+                }
+            }, {
+                new Competition
+                {
+                    IdCompetition = 2,
+                    IdCountry = 1,
+                    Rating = Rating.Good,
+                    Name = "Proximus League",
+                    NumberOfWinterStopDays = 21,
+                    StartDate = new DateTime(2018, 7, 5),
+                    StartWinterStop = new DateTime(2018, 12, 25),
+                    NumberOfPromoters = 0,
+                    NumberOfDegradaters = 2,
+                    MatchDays = new List<DayOfWeek>
+                    {
+                        DayOfWeek.Saturday,
+                        DayOfWeek.Sunday
+                    }
+                }
+            },
+            {
+                new Competition
+                {
+                    IdCompetition = 3,
+                    IdCountry = 1,
+                    Rating = Rating.Mediocre,
+                    Name = "1ste Amateurs",
+                    NumberOfWinterStopDays = 21,
+                    StartDate = new DateTime(2018, 7, 20),
+                    StartWinterStop = new DateTime(2018, 12, 25),
+                    NumberOfPromoters = 0,
+                    NumberOfDegradaters = 2,
+                    MatchDays = new List<DayOfWeek>
+                    {
+                        DayOfWeek.Saturday,
+                        DayOfWeek.Sunday
+                    }
+                }
+            }
+        };
+
+        public static readonly List<Team> Teams = new List<Team>
+        {
+            {
+                new Team
+                {
+                    IdTeam = 1,
+                    Name = "Club Brugge",
+                    Rating = Rating.VeryGood,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 2,
+                    Name = "Charleroi",
+                    Rating = Rating.VeryGood,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 3,
+                    Name = "Anderlecht",
+                    Rating = Rating.VeryGood,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 4,
+                    Name = "Racing Genk",
+                    Rating = Rating.Good,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 5,
+                    Name = "AA Gent",
+                    Rating = Rating.Good,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 6,
+                    Name = "Standard Liege",
+                    Rating = Rating.Good,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 7,
+                    Name = "KV Mechelen",
+                    Rating = Rating.Mediocre,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 8,
+                    Name = "Waasland Beveren",
+                    Rating = Rating.Mediocre,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 9,
+                    Name = "KV Kortrijk",
+                    Rating = Rating.Mediocre,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 10,
+                    Name = "KV Oostende",
+                    Rating = Rating.Mediocre,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 11,
+                    Name = "Zulte Waregem",
+                    Rating = Rating.Mediocre,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 12,
+                    Name = "K.A.S. Eupen",
+                    Rating = Rating.Bad,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 13,
+                    Name = "Royal Excelsior Moeskroen",
+                    Rating = Rating.Bad,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 14,
+                    Name = "STVV Sint-Truiden",
+                    Rating = Rating.Bad,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 15,
+                    Name = "Lokeren",
+                    Rating = Rating.Bad,
+                    IdCompetition = 1
+                }
+            },
+            {
+                new Team
+                {
+                    IdTeam = 16,
+                    Name = "Royal Antwerp FC",
+                    Rating = Rating.Bad,
+                    IdCompetition = 1
+                }
+            }
+        };
     }
 }

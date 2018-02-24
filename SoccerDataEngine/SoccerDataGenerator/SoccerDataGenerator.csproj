@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\BaseDomains.cs" />
+    <Compile Include="Data\Fixture.cs" />
+    <Compile Include="Data\MatchCombination.cs" />
     <Compile Include="Data\Staff.cs" />
     <Compile Include="Data\Competition.cs" />
     <Compile Include="Data\Contract.cs" />
@@ -63,6 +65,8 @@
     <Compile Include="Generators\AssemblyGenerators\AssemblyGeneratorStrategyBase.cs" />
     <Compile Include="Generators\AttributeGenerators\AttributeGeneratorBase.cs" />
     <Compile Include="Generators\AttributeGenerators\IAttributeGenerator.cs" />
+    <Compile Include="Generators\FixtureGenerators\FixtureGenerator.cs" />
+    <Compile Include="Generators\FixtureGenerators\IFixtureGeneratorStrategy.cs" />
     <Compile Include="Generators\PersonGenerators\StaffGeneratorStrategy.cs" />
     <Compile Include="Generators\AssemblyGenerators\IAssemblyGeneratorStrategy.cs" />
     <Compile Include="Generators\PersonGenerators\IPersonGeneratorStrategy.cs" />
@@ -79,5 +83,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

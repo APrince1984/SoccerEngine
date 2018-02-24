@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SoccerDataGenerator.Data;
 
 namespace SoccerDataGenerator.Utils
@@ -7,9 +8,16 @@ namespace SoccerDataGenerator.Utils
     {
         private static readonly Random Rnd = new Random();
 
+
         public static int GetRandomInt(int minValue, int maxValue)
         {
             return Rnd.Next(minValue, maxValue);
+        }
+
+        public static T GetRandomObject<T>(List<T> obj) where T : class 
+        {
+            var index = Rnd.Next(obj.Count);
+            return obj[index];
         }
 
         public static bool GetRandomBoolWithPossiblityToImproveChances(int chanceImprovement = 0)

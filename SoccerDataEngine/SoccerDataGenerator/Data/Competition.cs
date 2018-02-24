@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SoccerDataGenerator.Data
 {
@@ -17,5 +19,17 @@ namespace SoccerDataGenerator.Data
         public int IdCountry { get; set; }
 
         public virtual Country CompetitionCountry { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public DateTime? StartWinterStop { get; set; }
+
+        public int NumberOfWinterStopDays { get; set; }
+
+        public int NumberOfPromoters { get; set; }
+
+        public int NumberOfDegradaters { get; set; }
+
+        public List<DayOfWeek> MatchDays { get; set; }
     }
 }
