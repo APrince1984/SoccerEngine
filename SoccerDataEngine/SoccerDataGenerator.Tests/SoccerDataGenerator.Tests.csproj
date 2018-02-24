@@ -51,6 +51,7 @@
     <Compile Include="Generators\AssemblyGenerators\SquadAssemblyGeneratorStrategyTest.cs" />
     <Compile Include="Generators\AssemblyGenerators\StaffAssemblyGeneratorStrategyTest.cs" />
     <Compile Include="Generators\AttributeGenerators\AttributeGeneratorTest.cs" />
+    <Compile Include="Generators\FixtureGenerators\CompetitionFixturesGeneratorTest.cs" />
     <Compile Include="Generators\FixtureGenerators\MatchDayFixturesGeneratorTest.cs" />
     <Compile Include="Generators\PersonGenerators\PlayerGeneratorStrategyTest.cs" />
     <Compile Include="Generators\PersonGenerators\StaffGeneratorStrategyTest.cs" />

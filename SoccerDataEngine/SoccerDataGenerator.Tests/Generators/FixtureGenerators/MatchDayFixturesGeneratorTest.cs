@@ -18,6 +18,7 @@ namespace SoccerDataGenerator.Tests.Generators.FixtureGenerators
             _matchCombinations = new Dictionary<int, int> { { 1, 2 }, { 3, 4 }, {5, 6} };
             _generator = new MatchDayFixturesGenerator(_matchCombinations);
         }
+        
 
         [Test]
         public void CreateOnFixture_ReturnsOneFixture()

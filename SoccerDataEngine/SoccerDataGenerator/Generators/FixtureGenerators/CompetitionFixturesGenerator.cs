@@ -19,28 +19,28 @@ namespace SoccerDataGenerator.Generators.FixtureGenerators
             return CreateFixturesForCompetition(teamsInCompetition, allMatchCombinations);
         }
 
-        internal Dictionary<int, int> CreateAllMatchCombinations(List<Team> teams)
+        internal List<MatchCombination> CreateAllMatchCombinations(List<Team> teams)
         {
             var homeTeams = teams;
             var awayTeams = teams;
 
-            var combinations = new Dictionary<int, int>();
+            var combinations = new List<MatchCombination>();
             foreach (var homeTeam in homeTeams)
-            foreach (var awayTeam in awayTeams)
-                if (homeTeam.IdTeam != awayTeam.IdTeam)
-                    combinations.Add(homeTeam.IdTeam, awayTeam.IdTeam);
+                foreach (var awayTeam in awayTeams)
+                    if (homeTeam.IdTeam != awayTeam.IdTeam)
+                        combinations.Add(new MatchCombination{IdHomeTeam = homeTeam.IdTeam, IdAwayTeam = awayTeam.IdTeam});
 
             return combinations;
         }
 
-        internal List<Fixture> CreateFixturesForCompetition(List<Team> teamsInCompetition, Dictionary<int, int> allMatchCombinations)
+        internal List<Fixture> CreateFixturesForCompetition(List<Team> teamsInCompetition, List<MatchCombination> allMatchCombinations)
         {
             var fixturesForCompetition = new List<Fixture>();
             var idFixture = 0;
             for (var matchDay = 0; matchDay < (teamsInCompetition.Count() - 1) * 2; matchDay++)
             {
                 idFixture++;
-                var gamesForMatchDay = GetGamesForMatchDay(allMatchCombinations, (teamsInCompetition.Count - 1) * 2);
+                var gamesForMatchDay = GetGamesForMatchDay(allMatchCombinations, teamsInCompetition.Count / 2);
                 var matchDayFixtureGenerator = new MatchDayFixturesGenerator(gamesForMatchDay);
                 var matchDayFixtures = matchDayFixtureGenerator.GenerateFixtures();
                 foreach (var fixture in matchDayFixtures)
@@ -52,14 +52,17 @@ namespace SoccerDataGenerator.Generators.FixtureGenerators
             return fixturesForCompetition;
         }
 
-        internal Dictionary<int, int> GetGamesForMatchDay(Dictionary<int, int> allMatchCombinations, int numberOfGamesOnMatchDay)
+        internal Dictionary<int, int> GetGamesForMatchDay(List<MatchCombination> allMatchCombinations, int numberOfGamesOnMatchDay)
         {
             var gamesForMatchDay = new Dictionary<int, int>();
             for (var i = 0; i < numberOfGamesOnMatchDay; i++)
             {
-                var gameForMatchDay = RandomUtil.GetRandomDictionary(allMatchCombinations);
-                gamesForMatchDay.Add(gameForMatchDay.First().Key, gameForMatchDay.First().Value);
-                allMatchCombinations.Remove(gameForMatchDay.First().Key);
+                var gameForMatchDay = RandomUtil.GetRandomObject(allMatchCombinations);
+                while (gamesForMatchDay.ContainsKey(gameForMatchDay.IdHomeTeam))
+                    gameForMatchDay = RandomUtil.GetRandomObject(allMatchCombinations);
+                
+                gamesForMatchDay.Add(gameForMatchDay.IdHomeTeam, gameForMatchDay.IdAwayTeam);
+                allMatchCombinations.Remove(gameForMatchDay);
             }
 
             return gamesForMatchDay;
@@ -80,8 +83,8 @@ namespace SoccerDataGenerator.Generators.FixtureGenerators
         internal DateTime GetCompetitionStartDate()
         {
             var startDate = Obj.StartDate;
-            while (Obj.StartDate.DayOfWeek != Obj.MatchDays[0])
-                startDate.AddDays(1);
+            while (startDate.DayOfWeek != Obj.MatchDays[0])
+                startDate = startDate.AddDays(1);
             return startDate;
         }
     }
